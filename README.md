@@ -1,2 +1,3 @@
-# ita-s9-pf
-IT Academy - Sprint 9 - ReacTube (Projecte Final)
+# IT Academy
+## Sprint 9: ReacTube (Projecte Final)
+Rubèn Nieto Perarnau
