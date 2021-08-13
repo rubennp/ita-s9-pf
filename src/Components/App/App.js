@@ -1,13 +1,13 @@
-import { Container } from 'react-bootstrap';
+import * as Styled from './App.styled';
 
 /*
  * App
  */
 const App = () => {
   return (
-    <Container className="my-5">
+    <Styled.Main>
       <h1>Hello App</h1>
-    </Container>
+    </Styled.Main>
   );
 }
 
