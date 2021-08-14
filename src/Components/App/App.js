@@ -12,7 +12,7 @@ import VideoDetail from './VideoDetail';
 import useGetVideoList from '../../hooks';
 
 /*
- * App
+ * App(): main Component
  */
 const App = () => {
   const [search, setSearch] = useState('');
@@ -25,7 +25,7 @@ const App = () => {
 
   console.log(videoList);
   return (
-    <Styled.Main>
+    <Styled.Main fluid>
       <SearchBar search={search} handleSubmit={handleSubmit}/>
       { videoList && <VideoList list={videoList.items} handleVideoSelect={handleVideoSelect}/> }
       <VideoDetail video={videoSelected} />
