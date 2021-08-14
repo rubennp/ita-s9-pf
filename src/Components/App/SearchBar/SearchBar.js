@@ -8,6 +8,8 @@ import { SearchCont } from './SearchBar.styled';
  * SearchBar(): Component
  * 
  * vistos los problemas con las cuotas de la API de youtube, le pongo un botón para realizar el fetch
+ * (aunque me gusta más dinámico en cada caracter, la cantidad de llamadas a la API es brutal y me agota
+ * la cuota diaria, lástima.)
  */
 const SearchBar = ({ search, handleSubmit}) => {
     const [value, setValue] = useState(search);
