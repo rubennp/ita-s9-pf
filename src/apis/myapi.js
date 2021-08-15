@@ -17,6 +17,10 @@ export const response = {
     ]
 };
 
+export const filteredItems = search => {
+    return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
+};
+
 /* 
  * referencia Youtub API search snippet response 
  */
@@ -45,7 +49,3 @@ export const response = {
 //       "channelTitle": string
 //     }
 // }
-
-export const filteredItems = search => {
-    return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
-};

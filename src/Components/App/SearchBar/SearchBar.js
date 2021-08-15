@@ -18,7 +18,7 @@ const SearchBar = ({ search, handleSubmit}) => {
         <SearchCont fluid>
             <Form>
                 <Row>
-                    <Col xs={7} sm={9} lg={10}>
+                    <Col xs={7} sm={8} lg={9} xl={10}>
                         <Form.Control
                             type="search" 
                             placeholder="Your search..."
@@ -26,7 +26,7 @@ const SearchBar = ({ search, handleSubmit}) => {
                             onChange={e => { setValue(e.target.value) }}
                         />
                     </Col>  
-                    <Col className="d-flex gap-2 justify-content-end">
+                    <Col className="d-flex gap-1 justify-content-end">
                         <Button type="button" onClick={() => handleSubmit(value)}>Search</Button>
                         <Button type="reset" onClick={() => {
                             setValue('');

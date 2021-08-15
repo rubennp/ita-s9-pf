@@ -1,6 +1,6 @@
-const VideoDetail = () => {
+const VideoDetail = ({video}) => {
     return (
-        <h2>Video Detail</h2>
+        <h2>{video ? video.snippet.title : "Please, select a video"}</h2>
     );
 };
 

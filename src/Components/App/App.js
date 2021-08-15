@@ -16,19 +16,26 @@ import useGetVideoList from '../../hooks';
  */
 const App = () => {
   const [search, setSearch] = useState('');
-  const handleSubmit = search => setSearch(search);
+  const [videoSelected, setVideoSelected] = useState(null);
 
   const videoList = useGetVideoList(search, [search]);
   
-  const [videoSelected, setVideoSelected] = useState(null);
+  const handleSubmit = search => setSearch(search);  
   const handleVideoSelect = idx => setVideoSelected(videoList.items[idx]);
 
   console.log(videoList);
+  console.log(videoSelected);
   return (
     <Styled.Main fluid>
-      <SearchBar search={search} handleSubmit={handleSubmit}/>
-      { videoList && <VideoList list={videoList.items} handleVideoSelect={handleVideoSelect}/> }
-      <VideoDetail video={videoSelected} />
+      <Styled.Search>
+        <SearchBar search={search} handleSubmit={handleSubmit}/>
+      </Styled.Search>
+      <Styled.Detail>
+        <VideoDetail video={videoSelected} />
+      </Styled.Detail>
+      <Styled.List>
+        { videoList && <VideoList list={videoList.items} handleVideoSelect={handleVideoSelect}/> }
+      </Styled.List>  
     </Styled.Main>
   );
 }

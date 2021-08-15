@@ -1,9 +1,10 @@
-const VideoList = ({list}) => {
-    console.log(list);
+import { List } from './VideoList.styled';
+
+const VideoList = ({list, handleVideoSelect}) => {
     return (
-        <ul>
-            {list.map((video, idx) => <li key={idx}>{video.snippet.title}</li>) }
-        </ul>
+        <List className="m-1 p-2" variant="flush">
+            {list.map((video, idx) => <List.Item key={idx} onClick={() => handleVideoSelect(idx)}>{video.snippet.title}</List.Item>)}
+        </List>
     );
 };
 
