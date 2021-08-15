@@ -22,9 +22,7 @@ const App = () => {
   
   const handleSubmit = search => setSearch(search);  
   const handleVideoSelect = idx => setVideoSelected(videoList.items[idx]);
-
-  console.log(videoList);
-  console.log(videoSelected);
+  
   return (
     <Styled.Main fluid>
       <Styled.Search>
