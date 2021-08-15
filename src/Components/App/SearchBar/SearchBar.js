@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Button, Row, Col} from 'react-bootstrap';
+import { Form, Row, Col} from 'react-bootstrap';
 
 // Styled Components
 import { SearchCont } from './SearchBar.styled';
@@ -18,20 +18,29 @@ const SearchBar = ({ search, handleSubmit}) => {
         <SearchCont fluid>
             <Form>
                 <Row>
-                    <Col xs={7} sm={8} lg={9} xl={10}>
-                        <Form.Control
-                            type="search" 
-                            placeholder="Your search..."
-                            value={value}
-                            onChange={e => { setValue(e.target.value) }}
-                        />
-                    </Col>  
-                    <Col className="d-flex gap-1 justify-content-end">
-                        <Button type="button" onClick={() => handleSubmit(value)}>Search</Button>
-                        <Button type="reset" onClick={() => {
-                            setValue('');
-                            handleSubmit('');
-                        }}>Reset</Button>
+                    <Col>
+                        <Form.Group>
+                            <Form.Label>Video Search</Form.Label>
+                            <Form.Control
+                                type="search" 
+                                placeholder="Your search here"
+                                value={value}
+                                onChange={e => { setValue(e.target.value)}}
+                                onKeyDown={e => { 
+                                    if (e.code === 'Enter') {
+                                        handleSubmit(value);
+                                        e.preventDefault();
+                                    } else if (e.code === 'Escape') {
+                                        setValue('');
+                                        handleSubmit('');
+                                        e.preventDefault();
+                                    }
+                                }}
+                            />
+                            <Form.Text className="muted">
+                                Press <kbd>Enter</kbd> to submit or <kbd>Esc</kbd> to reset
+                            </Form.Text>
+                        </Form.Group>
                     </Col>
                 </Row>
             </Form>
