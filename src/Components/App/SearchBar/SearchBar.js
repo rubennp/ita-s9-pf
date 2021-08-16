@@ -7,9 +7,8 @@ import { SearchCont } from './SearchBar.styled';
 /*
  * SearchBar(): Component
  * 
- * vistos los problemas con las cuotas de la API de youtube, le pongo un botón para realizar el fetch
- * (aunque me gusta más dinámico en cada caracter, la cantidad de llamadas a la API es brutal y me agota
- * la cuota diaria, lástima.)
+ * vistos los problemas con las cuotas de la API de youtube, capturo Enter para realizar fetch y que 
+ * no realize tantas consultas a la API.
  */
 const SearchBar = ({ search, handleSubmit}) => {
     const [value, setValue] = useState(search);
@@ -38,7 +37,7 @@ const SearchBar = ({ search, handleSubmit}) => {
                                 }}
                             />
                             <Form.Text className="muted">
-                                Press <kbd>Enter</kbd> to submit or <kbd>Esc</kbd> to reset
+                                Press <kbd>Enter</kbd> to submit and <kbd>Esc</kbd> to reset
                             </Form.Text>
                         </Form.Group>
                     </Col>
