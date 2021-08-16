@@ -1,4 +1,6 @@
-
+export const filteredItems = search => {
+    return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
+};
 // ... para tener algun dato con el que poder "trabajar" por problemas con la cuota en la API de youtube ...
 export const response = {
     "kind": "youtube#searchListResponse",
@@ -181,37 +183,275 @@ export const response = {
         }
       }
     ]
-  };  
+  };
 
-export const filteredItems = search => {
-    return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
-};
+/* RELACIONADOS: (https://developers.google.com/youtube/v3/guides/implementation/videos)
+    const res = await youtube.get('/search/', {
+        params: {
+          type: "video",
+          relatedToVideoId: "(idvideo)"
+        }
+    });
+*/
 
-/* 
- * referencia Youtub API search snippet response 
- */
+/* POPULARES: (https://developers.google.com/youtube/v3/guides/implementation/videos)
+    const res = await youtube.get('/search/', {
+        params: {
+          chart: "mostPopular",
+          (regionCode: ["es"]),
+          (videoCategory: [27])
+        }
+    });
+*/
 
-// {
-//     "kind": "youtube#searchResult",
-//     "etag": etag,
-//     "id": {
-//       "kind": string,
-//       "videoId": string,
-//       "channelId": string,
-//       "playlistId": string
-//     },
-//     "snippet": {
-//       "publishedAt": datetime,
-//       "channelId": string,
-//       "title": string,
-//       "description": string,
-//       "thumbnails": {
-//         (key): {
-//           "url": string,
-//           "width": unsigned integer,
-//           "height": unsigned integer
-//         }
-//       },
-//       "channelTitle": string
-//     }
-// }
+/* VIDEO CATEGORIES: (https://gist.github.com/dgp/1b24bf2961521bd75d6c)
+2 - Autos & Vehicles
+1 -  Film & Animation
+10 - Music
+15 - Pets & Animals
+17 - Sports
+18 - Short Movies
+19 - Travel & Events
+20 - Gaming
+21 - Videoblogging
+22 - People & Blogs
+23 - Comedy
+24 - Entertainment
+25 - News & Politics
+26 - Howto & Style
+27 - Education
+28 - Science & Technology
+29 - Nonprofits & Activism
+30 - Movies
+31 - Anime/Animation
+32 - Action/Adventure
+33 - Classics
+34 - Comedy
+35 - Documentary
+36 - Drama
+37 - Family
+38 - Foreign
+39 - Horror
+40 - Sci-Fi/Fantasy
+41 - Thriller
+42 - Shorts
+43 - Shows
+44 - Trailers 
+*/
+
+/* const responseSecondPage = {
+    "kind": "youtube#searchListResponse",
+    "etag": "9USePcA-f7pzXFiI2NaCoMdjEd8",
+    "nextPageToken": "CAoQAA",
+    "prevPageToken": "CAUQAQ",
+    "regionCode": "ES",
+    "pageInfo": {
+      "totalResults": 1000000,
+      "resultsPerPage": 5
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EpA0mebPmZ6GqJfjDXvkw6z3JxM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "T_j60n1zgu0"
+        },
+        "snippet": {
+          "publishedAt": "2020-04-11T08:16:31Z",
+          "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+          "title": "Curso REACT JS ⚛️ - Aprende desde CERO 📈 Componentes, State, JSX (Tutorial Desde Cero en Español)",
+          "description": "Te enseño React desde cero. \u200d   ¿Qué es React? ¿Por qué deberías aprenderlo? ¿Por qué lo necesitamos? ¿Qué es JSX ? Props y State. Eventos.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/T_j60n1zgu0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/T_j60n1zgu0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/T_j60n1zgu0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "midudev",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-04-11T08:16:31Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "N34k_YkT7BZf5rZR7IzRu2QR1XQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "Ke90Tje7VS0"
+        },
+        "snippet": {
+          "publishedAt": "2018-07-16T16:51:44Z",
+          "channelId": "UCWv7vMbMWH4-V0ZXdmDpPBA",
+          "title": "React JS - React Tutorial for Beginners",
+          "description": "React JS Tutorial - Get up & running with React JS: the most popular JavaScript library in the world! Want to master React? Get my React mastery course: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/Ke90Tje7VS0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/Ke90Tje7VS0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/Ke90Tje7VS0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Programming with Mosh",
+          "liveBroadcastContent": "none",
+          "publishTime": "2018-07-16T16:51:44Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "LO1W27UtxyVi-qJI5n5j2UBaty0",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "b-wQJarohBI"
+        },
+        "snippet": {
+          "publishedAt": "2019-07-22T21:00:03Z",
+          "channelId": "UC0v-tlzsn0QZwJnkiaUSJVQ",
+          "title": "Teens React To Try To Keep Eating While Watching Challenge",
+          "description": "Try To Keep Eating While Watching Challenge Reacted to by Teens. Original links below. Join the SuperFam and support FBE: ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/b-wQJarohBI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/b-wQJarohBI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/b-wQJarohBI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "REACT",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-07-22T21:00:03Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "zhSyI72Xz6_DHaYNHO1x57RPOL8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "1-2eyS0k-IA"
+        },
+        "snippet": {
+          "publishedAt": "2018-02-20T04:15:30Z",
+          "channelId": "UC-foHKza2KlpQuo2wi6UCAg",
+          "title": "¿Qué es React JS? Breve explicación animada",
+          "description": "React (también llamada React.js o ReactJS) es una librería Javascript de código abierto para crear interfaces de usuario con el objetivo de animar al desarrollo ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/1-2eyS0k-IA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/1-2eyS0k-IA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/1-2eyS0k-IA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Bitech Studio",
+          "liveBroadcastContent": "none",
+          "publishTime": "2018-02-20T04:15:30Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "Ja9d-lT9A0Dc0jd5AMyctn2tKqo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "IfP7fUqUZy0"
+        },
+        "snippet": {
+          "publishedAt": "2021-08-15T13:35:24Z",
+          "channelId": "UCfRNJiafEm1LBBGFTTq4cXw",
+          "title": "*TERHARU* BER-11 REACT THIS IS INDONESIA",
+          "description": "Get Halilintar The Father Book: https://linktr.ee/genhalilintarmarket Ziggy Zagga Gen Halilintar RBT: https://i.quizy.id/zigzag ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/IfP7fUqUZy0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/IfP7fUqUZy0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/IfP7fUqUZy0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "GEN HALILINTAR",
+          "liveBroadcastContent": "none",
+          "publishTime": "2021-08-15T13:35:24Z"
+        }
+      }
+    ]
+  };  */
+
+/* referencia Youtube API search snippet response 
+{
+    "kind": "youtube#searchResult",
+    "etag": etag,
+    "nextPageToken": string,
+    ("prevPageToken": string,)
+    "regionCode": string,
+    "pageInfo": {
+      "totalResults": number,
+      "resultsPerPage": number
+    },
+    "id": {
+      "kind": string,
+      "videoId": string,
+      "channelId": string,
+      "playlistId": string
+    },
+    "snippet": {
+      "publishedAt": datetime,
+      "channelId": string,
+      "title": string,
+      "description": string,
+      "thumbnails": {
+        (key): {
+          "url": string,
+          "width": unsigned integer,
+          "height": unsigned integer
+        }
+      },
+      "channelTitle": string
+    }
+}; */
