@@ -1,68 +1,187 @@
 
 // ... para tener algun dato con el que poder "trabajar" por problemas con la cuota en la API de youtube ...
 export const response = {
-    count: 5,
-    items: 
-    [
-        { 
-            id: { 
-                videoId: "Dorf8i6lCuk" 
-            }, 
-            snippet: { 
-                title: "React Full Project", 
-                description: 
-                `Free tutorial 2021! Inmensae subtilitatis, obscuris et malesuada fames. 
-                Contra legem facit qui id facit quod lex prohibet.`
+    "kind": "youtube#searchListResponse",
+    "etag": "bOCxDOn1vBofoR4IfAieAKGCoWA",
+    "nextPageToken": "CAUQAA",
+    "regionCode": "ES",
+    "pageInfo": {
+      "totalResults": 1000000,
+      "resultsPerPage": 5
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "gCZiSUafJP7diGWEEY4mMQL605Y",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "lWQ69WX7-hA"
+        },
+        "snippet": {
+          "publishedAt": "2019-06-10T23:00:02Z",
+          "channelId": "UCP15FVAA2UL-QOcGhy7-ezA",
+          "title": "¿Qué es React.js y cómo funciona?",
+          "description": "React.js es una librería para crear interfaces web, con ella están construidas las dos redes sociales más grandes: Facebook e Instagram. En este video ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/lWQ69WX7-hA/default.jpg",
+              "width": 120,
+              "height": 90
             },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/lWQ69WX7-hA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/lWQ69WX7-hA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "EDteam",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-06-10T23:00:02Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "72Egx6_MhEzU2I_ViHiQxPajSw8",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "w7ejDZ8SWv8"
         },
-        { 
-            id: { 
-                videoId: "NCwa_xi0Uuc" 
-            }, 
-            snippet: { 
-                title: "ES6 in 1 hour",
-                description: 
-                `ES6 Tutorial: Learn Modern JavaScript in 1 Hour.
-                Ullamco laboris nisi ut aliquid ex ea commodi consequat. Nihilne te nocturnum praesidium Palati, nihil urbis vigiliae. 
-                Inmensae subtilitatis, obscuris et malesuada fames.` 
-            } 
+        "snippet": {
+          "publishedAt": "2021-01-18T19:01:11Z",
+          "channelId": "UC29ju8bIPH5as8OGnQzwJyA",
+          "title": "React JS Crash Course 2021",
+          "description": "Get started with React in this crash course. We will be building a task tracker app and look at components, props, state, hooks, working with an API and more.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/w7ejDZ8SWv8/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/w7ejDZ8SWv8/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/w7ejDZ8SWv8/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Traversy Media",
+          "liveBroadcastContent": "none",
+          "publishTime": "2021-01-18T19:01:11Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "SO0r2REV_EUK9BA4qj9P5S7UlCg",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "EMk6nom1aS4"
         },
-        { 
-            id: { 
-                videoId: "a00NRSFgHsY" 
-            }, 
-            snippet: { 
-                title: "Learn this, please!",
-                description: 
-                `5 JavaScript Concepts you HAVE TO KNOW.
-                Quis aute iure reprehenderit in voluptate velit esse. Curabitur est gravida et libero vitae dictum. A communi observantia non est recedendum. Integer legentibus erat a ante historiarum dapibus. Ambitioni dedisse scripsisse iudicaretur.
-                Ut enim ad minim veniam, quis nostrud exercitation. Quisque placerat facilisis egestas cillum dolore. Cras mattis iudicium purus sit amet fermentum. Sed haec quis possit intrepidus aestimare tellus. Mercedem aut nummos unde unde extricat, amaras.`
-            } 
+        "snippet": {
+          "publishedAt": "2021-04-23T16:45:14Z",
+          "channelId": "UCJgGc8pQO1lv04VXrBxA_Hg",
+          "title": "APRENDE REACT BÁSICO en 30 MINUTOS ⏰  - Tutorial de React.js Desde Cero",
+          "description": "Aprende React.js en poco tiempo con una introducción a los fundamentos de la librería para empezar a trabajar con ella. Veremos como iniciar una app React ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/EMk6nom1aS4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/EMk6nom1aS4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/EMk6nom1aS4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Carlos Azaustre - Aprende JavaScript",
+          "liveBroadcastContent": "none",
+          "publishTime": "2021-04-23T16:45:14Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "qxuqnU_wLha2IUTzcJhurvG8SCo",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zIY87vU33aA"
         },
-        { 
-            id: { 
-                videoId: "EMk6nom1aS4" 
-            }, 
-            snippet: { 
-                title: "APRENDE REACT BÁSICO en 30 MINUTOS",
-                description: 
-                `Tutorial de React.js Desde 0.
-                Pellentesque habitant morbi tristique senectus et netus.
-                Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.` 
-            } 
+        "snippet": {
+          "publishedAt": "2019-06-24T21:48:56Z",
+          "channelId": "UCX9NJ471o7Wie1DQe94RVIg",
+          "title": "Reactjs, Curso Práctico para Principiantes (React 16)",
+          "description": "EXPO, SDK De React para desarrollo de Apps Link ➞ https://bit.ly/3jdjnST Aprende a crear aplicaciones web Frontend usando una de las bibliotecas de ...",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "Fazt",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-06-24T21:48:56Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "EpA0mebPmZ6GqJfjDXvkw6z3JxM",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "T_j60n1zgu0"
         },
-        { 
-            id: { 
-                videoId: "f-E1zyTfA3Q" 
-            }, 
-            snippet: { 
-                title: "React Styled Components",
-                description: 
-                `Quam diu etiam furor iste tuus nos eludet? Pellentesque habitant morbi tristique senectus et netus. Fictum, deserunt mollit anim laborum astutumque! Petierunt uti sibi concilium totius Galliae in diem certam indicere. Integer legentibus erat a ante historiarum dapibus. Quid securi etiam tamquam eu fugiat nulla pariatur.`  
-            } 
-        },
+        "snippet": {
+          "publishedAt": "2020-04-11T08:16:31Z",
+          "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+          "title": "Curso REACT JS ⚛️ - Aprende desde CERO 📈 Componentes, State, JSX (Tutorial Desde Cero en Español)",
+          "description": "Te enseño React desde cero. \u200d   ¿Qué es React? ¿Por qué deberías aprenderlo? ¿Por qué lo necesitamos? ¿Qué es JSX ? Props y State. Eventos.",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/T_j60n1zgu0/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/T_j60n1zgu0/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/T_j60n1zgu0/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "midudev",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-04-11T08:16:31Z"
+        }
+      }
     ]
-};
+  };  
 
 export const filteredItems = search => {
     return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));

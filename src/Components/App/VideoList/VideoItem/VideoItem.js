@@ -13,7 +13,7 @@ const VideoItem = ({video, idx, handleVideoSelect}) => {
         }} as="li">
             <Row className="align-items-center item">
                 <Col xs={7} md={6} lg={7} xl={8}>
-                    <Card.Img src="default" onError={e => {e.target.src = `${onErrorVidImg}`}}/>
+                    <Card.Img src={video.snippet.thumbnails.high.url} onError={e => {e.target.src = `${onErrorVidImg}`}}/>
                 </Col>
                 <Col xs={5} md={6} lg={5} xl={4}>
                     <Card.Title><h3>{video.snippet.title}</h3></Card.Title>

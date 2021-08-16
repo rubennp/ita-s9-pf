@@ -18,7 +18,6 @@ export const Item = styled(ListGroup.Item)`
 
         h3 {
             transition: all .5s;
-            font-size: .9rem;
             color: rgba(0, 0, 0, 1);
         }
     }
