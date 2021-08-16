@@ -5,13 +5,13 @@ import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
 
 const VideoItem = ({video, idx, handleVideoSelect}) => {
     return (
-        <Item className="ITEM" onClick={e => {
+        <Item onClick={e => {
             const lastSelected = document.querySelector('.video-selected');
             if (lastSelected) lastSelected.classList.remove('video-selected');
-            e.target.classList.add('video-selected');
+            e.currentTarget.children[0].classList.add('video-selected');
             handleVideoSelect(idx);
         }} as="li">
-            <Row className="align-items-center">
+            <Row className="align-items-center item">
                 <Col xs={7} md={6} lg={7} xl={8}>
                     <Card.Img src="default" onError={e => {e.target.src = `${onErrorVidImg}`}}/>
                 </Col>
