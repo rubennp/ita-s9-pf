@@ -16,11 +16,11 @@ const useGetVideoList = search => {
     const getVideos = async () => {
         try {
             const ytRes = await getYTRes('SEARCH', search);
-            if (!ytRes) throw new Error("Fallo en conexión con YouTube");
+            if (!ytRes) throw new Error("Failed YouTube's Connection");
             setVideoList(ytRes);
         } catch(err) {
             console.error(err.message);
-            setVideoList({...myapi.response, items: myapi.filteredItems(search) });
+            setVideoList({...myapi.searchRes, items: myapi.filteredItems(search) });
         }
     };
 

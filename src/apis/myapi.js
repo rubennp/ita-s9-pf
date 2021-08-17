@@ -1,9 +1,9 @@
 export const filteredItems = search => {
-    return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
+    return searchRes.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
 };
 
 // ... para tener algun dato con el que poder "trabajar" por problemas con la cuota en la API de youtube ...
-export const response = {
+export const searchRes = {
     "kind": "youtube#searchListResponse",
     "etag": "bOCxDOn1vBofoR4IfAieAKGCoWA",
     "nextPageToken": "CAUQAA",
@@ -185,6 +185,189 @@ export const response = {
       }
     ]
   };
+
+export const relatedRes = {
+    "kind": "youtube#searchListResponse",
+    "etag": "khisJ8kH9LSutVeeWsIwxr995l0",
+    "nextPageToken": "CAUQAA",
+    "regionCode": "ES",
+    "pageInfo": {
+        "totalResults": 1000000,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#searchResult",
+            "etag": "t883YFhK9gzXCSJC443jnS1HE8k",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "qZXt1Aom3Cs"
+            },
+            "snippet": {
+                "publishedAt": "2021-02-24T16:36:53Z",
+                "channelId": "UC29ju8bIPH5as8OGnQzwJyA",
+                "title": "Vue JS Crash Course 2021",
+                "description": "Learn the fundamentals of Vue JS (v3) in this project-based crash course Task Tracker: https://github.com/bradtraversy/vue-crash-2021 Random User Generator: ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/qZXt1Aom3Cs/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/qZXt1Aom3Cs/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/qZXt1Aom3Cs/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Traversy Media",
+                "liveBroadcastContent": "none",
+                "publishTime": "2021-02-24T16:36:53Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "eDpatJud6y6gfHf2vtbVGzwoNro",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "5oPyQ8HRjVU"
+            },
+            "snippet": {
+                "publishedAt": "2021-08-16T12:01:05Z",
+                "channelId": "UCqt99sKYNTxqlHtzV9weUYA",
+                "title": "VU du 16/08/21 : &quot;That&#39;s All Right&quot;",
+                "description": "Un regard impertinent et libre, orchestré par Patrick Menais et son équipe, sur le monde de l'image. En avant-première du lundi au samedi à 17h00 sur ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/5oPyQ8HRjVU/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/5oPyQ8HRjVU/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/5oPyQ8HRjVU/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "VU FranceTV",
+                "liveBroadcastContent": "none",
+                "publishTime": "2021-08-16T12:01:05Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "6sgMUGWioMgzvUaIRmF66Zo68LA",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "AqesL138vMA"
+            },
+            "snippet": {
+                "publishedAt": "2020-04-23T00:29:35Z",
+                "channelId": "UCP15FVAA2UL-QOcGhy7-ezA",
+                "title": "¿Qué es Vue.js y por qué es tan especial?",
+                "description": "Vue.js es un framework progresivo de JavaScript que te da la flexibilidad necesaria para trabajar con todo tipo de proyectos (grandes o pequeños), además se ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/AqesL138vMA/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/AqesL138vMA/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/AqesL138vMA/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "EDteam",
+                "liveBroadcastContent": "none",
+                "publishTime": "2020-04-23T00:29:35Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "OkvNLkQ62xNuD0YOSnIQjLGiles",
+            "id": {
+                "kind": "youtube#playlist",
+                "playlistId": "PLPl81lqbj-4J-gfAERGDCdOQtVgRhSvIT"
+            },
+            "snippet": {
+                "publishedAt": "2018-11-07T23:19:00Z",
+                "channelId": "UCH7IANkyEcsVW_y1IlpkamQ",
+                "title": "Curso de Vue JS - Tutorial en Español 😍 [Desde Cero]",
+                "description": "Curso de Vue JS desde cero para principiantes , Aprende a trabajar con este hermoso framework de Javascript que es realmente poderoso. Si no conoces ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/GAQB7Y4X5fM/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/GAQB7Y4X5fM/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/GAQB7Y4X5fM/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Bluuweb !",
+                "liveBroadcastContent": "none",
+                "publishTime": "2018-11-07T23:19:00Z"
+            }
+        },
+        {
+            "kind": "youtube#searchResult",
+            "etag": "SI-VGW34PpLOwbkKXM1nBwkXFMM",
+            "id": {
+                "kind": "youtube#video",
+                "videoId": "iiV_9EU2vcA"
+            },
+            "snippet": {
+                "publishedAt": "2019-12-10T16:00:13Z",
+                "channelId": "UCv85NiROLKddHa0fBATwTzw",
+                "title": "Curso Vue.js en Español 📗 Tutorial de Vue 2 desde cero ✅ Instalación, Componentes y más 🔥",
+                "description": "Aprende VueJS desde cero hasta profesional aquí https://victorroblesweb.es/master-frameworks-js Suscríbete: ...",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/iiV_9EU2vcA/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/iiV_9EU2vcA/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/iiV_9EU2vcA/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    }
+                },
+                "channelTitle": "Victor Robles WEB",
+                "liveBroadcastContent": "none",
+                "publishTime": "2019-12-10T16:00:13Z"
+            }
+        }
+    ]
+};
 
 /* RELACIONADOS: (https://developers.google.com/youtube/v3/guides/implementation/videos)
     const res = await youtube.get('/search/', {
