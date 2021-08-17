@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// import { youtube } from '../apis/youtube';
+import { getYTRes } from '../apis/youtube';
 import * as myapi from '../apis/myapi';
 
 const saveOnLocalStorage = data => {
@@ -15,18 +15,11 @@ const useGetVideoList = search => {
 
     const getVideos = async () => {
         try {
-            // const res = await youtube.get('/search/', {
-            //     params: {
-            //       q: search,
-            //     }
-            // });
-            // const data = await res.data;
-            // setVideoList(data);
-            
-            // ... PROBLEMS with Youtube API v3 quota ...
-            setVideoList({...myapi.response, items: myapi.filteredItems(search) });
+            const ytRes = await getYTRes('SEARCH', search);
+            if (!ytRes) throw new Error("Fallo en conexión con YouTube");
+            setVideoList(ytRes);
         } catch(err) {
-            console.error(err);
+            console.error(err.message);
             setVideoList({...myapi.response, items: myapi.filteredItems(search) });
         }
     };
