@@ -1,6 +1,7 @@
 export const filteredItems = search => {
     return response.items.filter(item => new RegExp(search, "gi").test(item.snippet.title));
 };
+
 // ... para tener algun dato con el que poder "trabajar" por problemas con la cuota en la API de youtube ...
 export const response = {
     "kind": "youtube#searchListResponse",
