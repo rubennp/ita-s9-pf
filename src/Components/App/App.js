@@ -1,40 +1,57 @@
 import { useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Styled Components
-import * as Styled from './App.styled';
+import { Main, Screen } from './App.styled';
 
 // Components
 import SearchBar from './SearchBar';
-import VideoList from './VideoList';
-import VideoDetail from './VideoDetail';
+import Menu from './Menu';
+
+// Screen Components
+import Home from './Screens/Home';
+import History from './Screens/History';
+import Liked from './Screens/Liked';
+import Saved from './Screens/Saved';
+
+// import VideoList from './VideoList';
+// import VideoDetail from './VideoDetail';
 
 // Hooks
-import useGetVideoList from '../../hooks';
+// import useGetVideoList from '../../hooks';
 
 /*
  * App(): main Component
  */
 const App = () => {
   const [search, setSearch] = useState('');
-  const [videoSelected, setVideoSelected] = useState(null);
+  // const [videoSelected, setVideoSelected] = useState(null);
 
-  const videoList = useGetVideoList(search, [search]);
+  // const videoList = useGetVideoList(search, [search]);
   
   const handleSubmit = search => setSearch(search);  
-  const handleVideoSelect = idx => setVideoSelected(videoList.items[idx]);
+  // const handleVideoSelect = idx => setVideoSelected(videoList.items[idx]);
   
   return (
-    <Styled.Main fluid>
-      <Styled.Search>
-        <SearchBar search={search} handleSubmit={handleSubmit}/>
-      </Styled.Search>
-      <Styled.Detail>
+    <Main fluid>
+      <Menu />
+      <SearchBar search={search} handleSubmit={handleSubmit}/>
+      <Screen>
+        <Switch>
+          <Redirect exact from="/" to="/home" />
+          <Route path="/home" component={Home} />
+          <Route path="/history" component={History} />
+          <Route path="/liked" component={Liked} />
+          <Route path="/saved" component={Saved} />
+        </Switch>
+      </Screen>
+      {/* <S.Detail>
         <VideoDetail video={videoSelected} />
-      </Styled.Detail>
-      <Styled.List>
+      </S.Detail>
+      <S.List>
         { videoList && <VideoList list={videoList.items} handleVideoSelect={handleVideoSelect}/> }
-      </Styled.List>  
-    </Styled.Main>
+      </S.List>   */}
+    </Main>
   );
 }
 

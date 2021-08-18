@@ -14,14 +14,14 @@ const useGetVideoList = search => {
     const [videoList, setVideoList] = useState(null);
 
     const getVideos = async () => {
-        try {
-            const ytRes = await getYTRes('SEARCH', search);
-            if (!ytRes) throw new Error("Failed YouTube's Connection");
-            setVideoList(ytRes);
-        } catch(err) {
-            console.error(err.message);
+        // try {
+        //     const ytRes = await getYTRes('SEARCH', search);
+        //     if (!ytRes) throw new Error("Failed YouTube's Connection");
+        //     setVideoList(ytRes);
+        // } catch(err) {
+            // console.error(err.message);
             setVideoList({...myapi.searchRes, items: myapi.filteredItems(search) });
-        }
+        // }
     };
 
     useEffect(() => {

@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Form, Row, Col} from 'react-bootstrap';
+import { Form, Row, Col, InputGroup } from 'react-bootstrap';
+import { Search as SearchIcon } from 'react-bootstrap-icons';
 
 // Styled Components
-import { SearchCont } from './SearchBar.styled';
+import { SearchContainer } from './SearchBar.styled';
 
 /*
  * SearchBar(): Component
@@ -14,12 +15,12 @@ const SearchBar = ({ search, handleSubmit}) => {
     const [value, setValue] = useState(search);
 
     return (
-        <SearchCont fluid>
+        <SearchContainer fluid>
             <Form>
                 <Row>
                     <Col>
-                        <Form.Group>
-                            <Form.Label>Video Search</Form.Label>
+                        <InputGroup>
+                            <InputGroup.Text><SearchIcon size={16}/></InputGroup.Text>
                             <Form.Control
                                 type="search" 
                                 placeholder="Your search here"
@@ -35,15 +36,17 @@ const SearchBar = ({ search, handleSubmit}) => {
                                         e.preventDefault();
                                     }
                                 }}
+                                onFocus={() => {document.querySelector('.infoSearch').style.opacity = 1;}}
+                                onBlur={() => {document.querySelector('.infoSearch').style.opacity = 0;}}
                             />
-                            <Form.Text className="muted">
-                                Press <kbd>Enter</kbd> to submit and <kbd>Esc</kbd> to reset
-                            </Form.Text>
-                        </Form.Group>
+                        </InputGroup>
+                        <Form.Text className="muted infoSearch">
+                            Press <kbd>Enter</kbd> to submit and <kbd>Esc</kbd> to reset
+                        </Form.Text>
                     </Col>
                 </Row>
             </Form>
-        </SearchCont>
+        </SearchContainer>
     );
 };
 
