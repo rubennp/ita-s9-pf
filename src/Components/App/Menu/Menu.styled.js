@@ -1,11 +1,30 @@
 import styled from 'styled-components';
-import { Nav as Navigation } from 'react-bootstrap';
+import { Nav as Navigation, Image } from 'react-bootstrap';
 
-export const MenuContainer = styled.aside`
-    grid-area: menu;
+export const Img = styled(Image)``;
+
+export const MenuLogo = styled.div`
+    grid-area: menu-logo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        margin: 0;
+        margin-left: .25em;
+        font-size: 1.5em;
+        display: inline-block;
+        
+        span { 
+            color: red; 
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, .5));
+        }
+    }
+`;
+
+export const MenuNav = styled.div`
+    grid-area menu-nav;
     padding: 2em;
-    color: white;
-    background-color: #18141A;
     filter: drop-shadow(-1px -1px 5px rgba(255, 255, 255, .1));
 
     h2 {
@@ -14,6 +33,19 @@ export const MenuContainer = styled.aside`
         font-weight: bold;
         font-size: .9em;
     }
+`;
+
+export const MenuContainer = styled.aside`
+    display: grid;
+    grid-template-columns; 1fr;
+    grid-template-rows: 14.25% 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "menu-logo"
+        "menu-nav";
+    grid-area: menu;
+    color: white;
+    background-color: #18141A;
 `;
 
 export const Nav = styled(Navigation)`

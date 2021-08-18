@@ -7,7 +7,9 @@ import {
     BookmarkFill as SavedIcon
 } from 'react-bootstrap-icons';
 
-import { MenuContainer, Nav } from './Menu.styled';
+import { MenuContainer, MenuLogo, MenuNav, Nav, Img } from './Menu.styled';
+
+import Logo from '../../../assets/img/logo.svg';
 
 const menu = 
 [
@@ -20,18 +22,25 @@ const menu =
 const Menu = () => {
     return (
         <MenuContainer>
-            <h2>Menu</h2>
-            <Nav as="ul">
-                {menu.map((item, idx) => {
-                    return (
-                        <li>
-                            <NavLink key={idx} to={`/${item.route}`}>
-                                {item.icon}{item.what}
-                            </NavLink>
-                        </li>
-                    );
-                })}
-            </Nav>
+            <MenuLogo>
+                <Img src={Logo} alt="logo" width="50" fluid/>
+                <h1>Reac<span>TUBE</span></h1>
+            </MenuLogo>
+            <MenuNav>
+                <h2>Menu</h2>
+                <Nav as="ul">
+                    {menu.map((item, idx) => {
+                        return (
+                            <li key={idx}>
+                                <NavLink to={`/${item.route}`}>
+                                    {item.icon}{item.what}
+                                </NavLink>
+                            </li>
+                        );
+                    })}
+                </Nav>
+            </MenuNav>
+            
         </MenuContainer>
     )
 };
