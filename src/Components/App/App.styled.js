@@ -1,16 +1,11 @@
 import styled from 'styled-components';
 
 export const Screen = styled.section`
-    display: flex;
     grid-area: sections;
-    padding: 0 2em;
     color: white;
-    justify-content: center;
-    align-items: center;
-
-    * {
-        font-size: 4em;
-    }
+    font-size: .75em;
+    font-weight: bold;
+    padding: 0 2em;
 `;
 
 export const List = styled.aside`

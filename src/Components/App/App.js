@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Styled Components
@@ -13,25 +13,35 @@ import Home from './Screens/Home';
 import History from './Screens/History';
 import Liked from './Screens/Liked';
 import Saved from './Screens/Saved';
+import Video from './Screens/Video';
 
 // import VideoList from './VideoList';
-// import VideoDetail from './VideoDetail';
 
 // Hooks
-// import useGetVideoList from '../../hooks';
+import useGetVideoList from '../../hooks';
 
 /*
  * App(): main Component
  */
 const App = () => {
+  const [lastSearch, setLastSearch] = useState(null);
   const [search, setSearch] = useState('');
-  // const [videoSelected, setVideoSelected] = useState(null);
+  const [videoSelected, setVideoSelected] = useState(null);
 
-  // const videoList = useGetVideoList(search, [search]);
-  
-  const handleSubmit = search => setSearch(search);  
-  // const handleVideoSelect = idx => setVideoSelected(videoList.items[idx]);
-  
+  const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
+  const videoRecommended = useGetVideoList({action: 'RECOMMENDED'}, []);
+
+  const handleSubmit = search => {
+    setSearch(search);
+    if (search !== '') setLastSearch(search); 
+  };
+
+  const handleVideoSelect = video => { setVideoSelected(video); };
+
+  useEffect(function onVideoSelected(){
+    console.log(videoSelected);
+  }, [videoSelected]);
+
   return (
     <Main fluid>
       <Menu />
@@ -39,10 +49,15 @@ const App = () => {
       <Screen>
         <Switch>
           <Redirect exact from="/" to="/home" />
-          <Route path="/home" component={Home} />
+          <Route path="/home">
+            { (videoSearch && videoRecommended) && <Home search={search} fromSearch={videoSearch} fromRecommended={videoRecommended} handleSelect={handleVideoSelect} /> }
+          </Route>
           <Route path="/history" component={History} />
           <Route path="/liked" component={Liked} />
           <Route path="/saved" component={Saved} />
+          <Route path="/video">
+            <Video selected={videoSelected} />
+          </Route>
         </Switch>
       </Screen>
       {/* <S.Detail>

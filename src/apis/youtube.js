@@ -12,7 +12,7 @@ const youtube = axios.create({
     },
 });
 
-const params = (func, param) => {
+const params = (func, param = '') => {
   switch(func) {
     case 'SEARCH':
       return ({ params: { q: param } });
