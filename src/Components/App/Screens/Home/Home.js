@@ -8,21 +8,21 @@ const Home = ({search, fromSearch, fromRecommended, handleSelect}) => {
             <RecommendedOrSearched>
                 { search === '' ?
                     <>
-                        <p>Recommended videos</p>
+                        <h3>Recommended videos</h3>
                         <VideoList list={fromRecommended.items} handleVideoSelect={handleSelect}/>
                     </>
                     :
                     <>
-                        <p>Searched videos</p>
+                        <h3>Searched videos</h3>
                         <VideoList list={fromSearch.items} handleVideoSelect={handleSelect}/>
                     </>
                 }   
             </RecommendedOrSearched>
             <LastViewed>
-                <p>Last viewed</p>
+                <h3>Last viewed</h3>
             </LastViewed>
             <Favorites>
-                <p>Favorites</p>
+                <h3>Favorites</h3>
             </Favorites>
         </Container>
     );

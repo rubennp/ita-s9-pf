@@ -12,7 +12,9 @@ export const Info = styled.div`
 `;
 
 export const Item = styled(ListGroup.Item)`
-    margin-left: 1.5em;
+    &:not(:first-of-type) {
+        margin-left: 1.5em;
+    }
 
     &:hover { 
         cursor: pointer;
@@ -29,8 +31,8 @@ export const Item = styled(ListGroup.Item)`
     }
 
     .card {
-        height: 200px;
-        width: 250px;
+        height: 25vh;
+        width: 20vw;
         border-radius: 1em;
         border: none;
         

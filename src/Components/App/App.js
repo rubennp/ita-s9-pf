@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 
 // Styled Components
 import { Main, Screen } from './App.styled';
@@ -24,6 +24,7 @@ import useGetVideoList from '../../hooks';
  * App(): main Component
  */
 const App = () => {
+  const history = useHistory();
   const [lastSearch, setLastSearch] = useState(null);
   const [search, setSearch] = useState('');
   const [videoSelected, setVideoSelected] = useState(null);
@@ -39,8 +40,14 @@ const App = () => {
   const handleVideoSelect = video => { setVideoSelected(video); };
 
   useEffect(function onVideoSelected(){
-    console.log(videoSelected);
+    history.push('/video');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoSelected]);
+
+  useEffect(function onSearch() {
+    history.push('/home');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoSearch]);
 
   return (
     <Main fluid>
@@ -56,7 +63,7 @@ const App = () => {
           <Route path="/liked" component={Liked} />
           <Route path="/saved" component={Saved} />
           <Route path="/video">
-            <Video selected={videoSelected} />
+            <Video selected={videoSelected} handleVideoSelect={handleVideoSelect} />
           </Route>
         </Switch>
       </Screen>

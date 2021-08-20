@@ -1,21 +1,5 @@
 import styled from 'styled-components';
 
-export const Screen = styled.section`
-    grid-area: sections;
-    color: white;
-    font-size: .75em;
-    font-weight: bold;
-    padding: 0 2em;
-`;
-
-export const List = styled.aside`
-    grid-area: video-list;
-`;
-
-export const Detail = styled.article`
-    grid-area: video-detail;
-`;
-
 export const Main = styled.main`
     display: grid; 
     grid-template-columns: 0.75fr 1fr 1fr 1fr; 
@@ -29,4 +13,15 @@ export const Main = styled.main`
     width: 100%; 
     height: 100vh;
     background-color: #161523;
+`;
+
+export const Screen = styled.article`
+    grid-area: sections;
+    padding: 0 2em;
+
+    h3 {
+        color: rgba(255, 255, 255, .5);
+        font-size: 1em;
+        font-weight: bold;
+    }
 `;

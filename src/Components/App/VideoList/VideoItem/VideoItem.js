@@ -16,7 +16,7 @@ const VideoItem = ({video, handleVideoSelect}) => {
                     <Info>
                         <div className="time">X time ago</div>
                         <div className="like"><Heart color="red" size={16} /></div>
-                    </Info>>
+                    </Info>
                 </Card.Body>
             </Card>
         </Item>

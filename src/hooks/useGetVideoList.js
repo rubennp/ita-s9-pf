@@ -46,6 +46,9 @@ const useGetVideoList = (from) => {
                 // }
                 setVideoList({...myapi.recommendedRes, items: myapi.recommendedRes.items});
                 break;
+            case 'RELATED':
+                setVideoList({...myapi.relatedRes, items: myapi.relatedRes.items});
+                break;
             default:
                 break;
         }

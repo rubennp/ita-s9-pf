@@ -1,51 +1,38 @@
 import styled from 'styled-components';
 
-export const Info = styled.div`
-    margin-top: 1rem;
-    border-radius: 5px;
+export const Detail = styled.section`
+    grid-area: video-detail;
+    display: grid;
+    grid-template-columns: 1.80fr 1.20fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "iframe video-info";
+    gap: 0 2em;
+
+    border-radius: 10px;
     background-color: white;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
-    padding: .75rem;
+    padding: 2em;
+`;
+
+export const Video = styled.iframe`
+    width: 100%;
+    height: 100%;
+`;
+
+export const Info = styled.div`
+    grid-area: video-info;
+    color: black;
 
     h2 { 
-        font-size: 1.1em; 
+        font-size: 1.5em; 
         font-weight: bold;
     }
 
     p { 
-        font-size: 0.9em;
+        font-size: 1em;
+        font-weight: 500;
+        color: #495057;
         margin-bottom: 0; 
     }
 
-`;
-
-export const NoSelected = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-
-    h2 {
-        margin: 0;
-    }
-`;
-
-export const Detail = styled.div`
-`;
-
-export const VideoContainer = styled.div`
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%; // 16:9 = 9 : 16 = 0.5625
-`;
-
-export const Video = styled.iframe`
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
 `;
