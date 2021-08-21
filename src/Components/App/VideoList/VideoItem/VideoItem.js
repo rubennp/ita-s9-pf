@@ -1,3 +1,5 @@
+import Moment from 'react-moment';
+
 import { Item, Info } from './VideoItem.styled';
 import { Card } from 'react-bootstrap';
 import { Heart } from 'react-bootstrap-icons';
@@ -14,7 +16,7 @@ const VideoItem = ({video, handleVideoSelect}) => {
                 <Card.Body>
                     <Card.Title>{video.snippet.title}</Card.Title>
                     <Info>
-                        <div className="time">X time ago</div>
+                        <div className="time"><Moment fromNow>{video.snippet.publishedAt}</Moment></div>
                         <div className="like"><Heart color="red" size={16} /></div>
                     </Info>
                 </Card.Body>

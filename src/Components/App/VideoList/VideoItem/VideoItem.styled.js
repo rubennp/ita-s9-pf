@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ListGroup } from 'react-bootstrap';
 
 export const Info = styled.div`
-    margin-top: .75em;
+    margin-top: .5em;
     display: flex;
     width: 100%;
     justify-content: space-between;
