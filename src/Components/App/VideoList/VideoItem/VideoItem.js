@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
-
 import Moment from 'react-moment';
 
-import { Item, Info } from './VideoItem.styled';
+// Components
+import ButtonLike from './ButtonLike';
 import { Card } from 'react-bootstrap';
-import { Heart, HeartFill } from 'react-bootstrap-icons';
+
+// Styled Components
+import { Item, Info } from './VideoItem.styled';
+
+
 
 import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
 
 const VideoItem = ({video, handleVideoSelect}) => {
-    const [liked, setLiked] = useState(false);
-
     return (
         <Item as="li">
             <Card>
@@ -22,13 +23,7 @@ const VideoItem = ({video, handleVideoSelect}) => {
                     <Info>
                         <div className="time"><Moment fromNow>{video.snippet.publishedAt}</Moment></div>
                         <div className="like">
-                            <button type="button" onClick={() => setLiked(prev => !prev)}>
-                                {liked ?
-                                <HeartFill color="red" size={16}/>
-                                :
-                                <Heart color="red" size={16}/>
-                                }
-                            </button>
+                            <ButtonLike />
                         </div>
                     </Info>
                 </Card.Body>
