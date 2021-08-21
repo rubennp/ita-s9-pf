@@ -9,6 +9,11 @@ export const Info = styled.div`
     font-size: .9em;
     font-weight: bold;
     color: #CED4DA;
+
+    button {
+        border: unset;
+        background-color: unset;
+    }
 `;
 
 export const Item = styled(ListGroup.Item)`
@@ -16,18 +21,10 @@ export const Item = styled(ListGroup.Item)`
         margin-left: 1.5em;
     }
 
-    &:hover { 
+    img:hover { 
         cursor: pointer;
-
-        img {
-            transition: opacity .5s;
-            opacity: .5;
-        }
-
-        .card-title {
-            transition: color .5s;
-            color: rgba(0, 0, 0, 1);
-        }
+        transition: opacity .5s;
+        opacity: .5;
     }
 
     .card {
