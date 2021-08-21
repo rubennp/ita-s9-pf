@@ -15,8 +15,6 @@ import Liked from './Screens/Liked';
 import Saved from './Screens/Saved';
 import Video from './Screens/Video';
 
-// import VideoList from './VideoList';
-
 // Hooks
 import useGetVideoList from '../../hooks';
 
@@ -28,9 +26,8 @@ const App = () => {
   const [lastSearch, setLastSearch] = useState(null);
   const [search, setSearch] = useState('');
   const [videoSelected, setVideoSelected] = useState(null);
-
+  
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
-  const videoRecommended = useGetVideoList({action: 'RECOMMENDED'}, []);
 
   const handleSubmit = search => {
     setSearch(search);
@@ -57,7 +54,7 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route path="/home">
-            { (videoSearch && videoRecommended) && <Home search={search} fromSearch={videoSearch} fromRecommended={videoRecommended} handleSelect={handleVideoSelect} /> }
+            { videoSearch && <Home search={search} list={videoSearch} handleSelect={handleVideoSelect} /> }
           </Route>
           <Route path="/history" component={History} />
           <Route path="/liked" component={Liked} />
@@ -67,12 +64,6 @@ const App = () => {
           </Route>
         </Switch>
       </Screen>
-      {/* <S.Detail>
-        <VideoDetail video={videoSelected} />
-      </S.Detail>
-      <S.List>
-        { videoList && <VideoList list={videoList.items} handleVideoSelect={handleVideoSelect}/> }
-      </S.List>   */}
     </Main>
   );
 }

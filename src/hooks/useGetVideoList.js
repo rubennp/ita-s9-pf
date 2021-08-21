@@ -36,16 +36,6 @@ const useGetVideoList = (from) => {
                 if (from.search !== '') setVideoList({...myapi.searchRes, items: myapi.filteredItems(from.search) });
                 else setVideoList({...myapi.recommendedRes, items: myapi.recommendedRes.items});
                 break;
-            case 'RECOMMENDED':
-                // try {
-                //     const ytRes = await getYTRes('POPULAR');
-                //     if (!ytRes) throw new Error("Failed YouTube's Connection");
-                //     setVideoList(ytRes);
-                // } catch(err) {
-                //     console.error(err.message);
-                // }
-                setVideoList({...myapi.recommendedRes, items: myapi.recommendedRes.items});
-                break;
             case 'RELATED':
                 setVideoList({...myapi.relatedRes, items: myapi.relatedRes.items});
                 break;
