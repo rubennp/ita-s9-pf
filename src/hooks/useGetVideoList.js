@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 // import { getYTRes } from '../apis/youtube';
 import * as myapi from '../apis/myapi';
 
-const saveOnLocalStorage = data => {
-    const onLocalStorage = JSON.parse(localStorage.getItem('reactube-res'));
+// const saveOnLocalStorage = data => {
+//     const onLocalStorage = JSON.parse(localStorage.getItem('reactube-res'));
 
-    if (!onLocalStorage) localStorage.setItem('reactube-res', JSON.stringify([data]));
-    else localStorage.setItem('reactube-res', JSON.stringify([...onLocalStorage, data]));
-};
+//     if (!onLocalStorage) localStorage.setItem('reactube-res', JSON.stringify([data]));
+//     else localStorage.setItem('reactube-res', JSON.stringify([...onLocalStorage, data]));
+// };
 
 const useGetVideoList = (from) => {
     const [videoList, setVideoList] = useState(null);
@@ -23,7 +23,9 @@ const useGetVideoList = (from) => {
                     // } catch(err) {
                     //     console.error(err.message);
                     // }
-
+    // !!
+    // TODO: remember to transform to a list of (id, snippet) like does myapi
+    // !!
                     // try {
                     //     const ytRes = from.search !== '' ? 
                     //         await getYTRes('SEARCH', from.search) :
@@ -33,23 +35,27 @@ const useGetVideoList = (from) => {
                     // } catch(err) {
                     //     console.error(err.message);
                     // }
-                if (from.search !== '') setVideoList({...myapi.searchRes, items: myapi.filteredItems(from.search) });
-                else setVideoList({...myapi.recommendedRes, items: myapi.recommendedRes.items});
+                if (from.search !== '') {
+                    setVideoList({items: myapi.filteredItems(from.search) });
+                }
+                else {
+                    setVideoList({
+                        items: myapi.recommendedRes.items.map(item => {
+                            return { id: item.id, snippet: item.snippet};
+                        })
+                    });
+                }
                 break;
             case 'RELATED':
-                setVideoList({...myapi.relatedRes, items: myapi.relatedRes.items});
+                setVideoList({
+                    items: myapi.relatedRes.items.map(item => {
+                        return { id: item.id.videoId, snippet: item.snippet };
+                    })
+                });
                 break;
             default:
                 break;
         }
-        // try {
-        //     const ytRes = await getYTRes('SEARCH', search);
-        //     if (!ytRes) throw new Error("Failed YouTube's Connection");
-        //     setVideoList(ytRes);
-        // } catch(err) {
-            // console.error(err.message);
-            // setVideoList({...myapi.searchRes, items: myapi.filteredItems(search) });
-        // }
     };
 
     useEffect(() => {

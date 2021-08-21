@@ -1,11 +1,11 @@
 import useGetVideoList from '../../../../hooks/useGetVideoList.js';
 
-import { Container, Detail, Related } from './Video.styled.js';
+import { Container, Related } from './Video.styled.js';
 
 import VideoDetail from './VideoDetail';
 import VideoList from '../../VideoList';
 
-const Video = ({selected, handleVideoSelect}) => {
+const Video = ({selected, handleVideoSelect, videoLiked, handleVideoLiked}) => {
     const related = useGetVideoList({action: 'RELATED', video: selected}, [selected]);
 
     return (
@@ -13,7 +13,7 @@ const Video = ({selected, handleVideoSelect}) => {
             <VideoDetail video={selected} />
             <Related>
                 <h3>Related</h3>
-                {related && <VideoList list={related.items} handleVideoSelect={handleVideoSelect} /> }
+                {related && <VideoList list={related.items} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked} /> }
             </Related>
         </Container>
     );

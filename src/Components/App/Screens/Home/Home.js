@@ -2,18 +2,28 @@ import { Container, RecommendedOrSearched, LastViewed, Favorites } from "./Home.
 
 import VideoList from '../../VideoList';
 
-const Home = ({search, list, handleSelect}) => {
+const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
     return (
         <Container>
             <RecommendedOrSearched>
                 <h3>{search === '' ? "Recommended" : "Searched"}  videos</h3>
-                <VideoList list={list.items} handleVideoSelect={handleSelect}/>
+                <VideoList 
+                    list={list.items} 
+                    handleVideoSelect={handleSelect} 
+                    videoLiked={videoLiked} 
+                    handleVideoLiked={handleVideoLiked} 
+                />
             </RecommendedOrSearched>
             <LastViewed>
                 <h3>Last searches</h3>
             </LastViewed>
             <Favorites>
                 <h3>Favorites videos</h3>
+                <ul>
+                    {videoLiked.map((video, idx) => {
+                        return <li key={idx}>{video.snippet.title}</li>;
+                    })}
+                </ul>
             </Favorites>
         </Container>
     );

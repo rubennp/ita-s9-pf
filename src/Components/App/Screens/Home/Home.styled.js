@@ -23,4 +23,17 @@ export const LastViewed = styled.section`
 
 export const Favorites = styled.section`
     grid-area: favorites;
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        background-color: rgba(255, 255, 255, .5);
+        color: white;
+        border-radius: .75em;
+        padding: .5em;
+        list-style-type: none;
+        margin-bottom: .5em;
+    }
 `;

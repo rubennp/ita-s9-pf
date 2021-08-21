@@ -23,18 +23,28 @@ import useGetVideoList from '../../hooks';
  */
 const App = () => {
   const history = useHistory();
+
+  // state
   const [lastSearch, setLastSearch] = useState(null);
   const [search, setSearch] = useState('');
   const [videoSelected, setVideoSelected] = useState(null);
+  const [videoLiked, setVideoLiked] = useState([]);
   
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
+
+  const handleVideoLiked = (video, like) => {
+    if (like) setVideoLiked(prev => [...prev, video]);
+    else setVideoLiked(prev => prev.filter(v => v.id !== video.id));
+  };
 
   const handleSubmit = search => {
     setSearch(search);
     if (search !== '') setLastSearch(search); 
   };
 
-  const handleVideoSelect = video => { setVideoSelected(video); };
+  const handleVideoSelect = video => { 
+    setVideoSelected(video); 
+  };
 
   useEffect(function onVideoSelected(){
     history.push('/video');
@@ -44,7 +54,7 @@ const App = () => {
   useEffect(function onSearch() {
     history.push('/home');
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [videoSearch]);
+  }, [videoSearch]); 
 
   return (
     <Main fluid>
@@ -54,13 +64,13 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="/home" />
           <Route path="/home">
-            { videoSearch && <Home search={search} list={videoSearch} handleSelect={handleVideoSelect} /> }
+            { videoSearch && <Home search={search} list={videoSearch} handleSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/> }
           </Route>
           <Route path="/history" component={History} />
           <Route path="/liked" component={Liked} />
           <Route path="/saved" component={Saved} />
           <Route path="/video">
-            <Video selected={videoSelected} handleVideoSelect={handleVideoSelect} />
+            <Video selected={videoSelected} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/>
           </Route>
         </Switch>
       </Screen>

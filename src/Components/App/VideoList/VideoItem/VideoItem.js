@@ -11,7 +11,7 @@ import { Item, Info } from './VideoItem.styled';
 
 import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
 
-const VideoItem = ({video, handleVideoSelect}) => {
+const VideoItem = ({video, handleVideoSelect, videoLiked, handleVideoLiked}) => {
     return (
         <Item as="li">
             <Card>
@@ -23,7 +23,11 @@ const VideoItem = ({video, handleVideoSelect}) => {
                     <Info>
                         <div className="time"><Moment fromNow>{video.snippet.publishedAt}</Moment></div>
                         <div className="like">
-                            <ButtonLike />
+                            <ButtonLike
+                                video={video}
+                                videoLiked={videoLiked} 
+                                handleVideoLiked={handleVideoLiked}
+                            />
                         </div>
                     </Info>
                 </Card.Body>

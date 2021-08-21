@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { ListGroup } from 'react-bootstrap';
 
 export const Info = styled.div`
-    margin-top: .5em;
+    margin-top: .75em;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    font-size: .9em;
+    font-size: .8em;
     font-weight: bold;
     color: #CED4DA;
 

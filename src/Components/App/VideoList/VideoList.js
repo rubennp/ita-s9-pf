@@ -4,10 +4,20 @@ import VideoItem from './VideoItem';
 // Styled Components
 import { List } from './VideoList.styled';
 
-const VideoList = ({list, handleVideoSelect}) => {
+const VideoList = ({list, handleVideoSelect, videoLiked, handleVideoLiked}) => {
     return (
         <List variant="flush" as="ul">
-            {list.map((video, idx) => <VideoItem key={idx} video={video} handleVideoSelect={handleVideoSelect}/>)}
+            {list.map((video, idx) => {
+                return (
+                    <VideoItem 
+                        key={idx} 
+                        video={video} 
+                        handleVideoSelect={handleVideoSelect} 
+                        videoLiked={videoLiked} 
+                        handleVideoLiked={handleVideoLiked}
+                    />
+                );
+            })}
         </List>
     );
 };
