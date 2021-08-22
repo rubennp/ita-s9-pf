@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 import { ListGroup } from 'react-bootstrap';
 
+export const Overlay = styled.div`
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 75%;
+    height: 100%;
+    width: 26.1%;
+    background-color: rgba(0, 0, 0, .75);
+    border-radius: 0 1em 1em 0;
+`;
+
 export const Info = styled.div`
     margin-top: .75em;
     display: flex;
@@ -9,17 +20,21 @@ export const Info = styled.div`
     font-size: .8em;
     font-weight: bold;
     color: #CED4DA;
-
-    button {
-        border: unset;
-        background-color: unset;
-    }
 `;
 
 export const Item = styled(ListGroup.Item)`
-    &:not(:first-of-type) {
-        margin-left: 1.5em;
-    }
+    ${props => {
+        return props.favorites ?
+            `&:nth-child(even) { 
+                margin-left: .5em;
+            }
+            margin-bottom: .5em;
+            `
+        :
+            `&:not(:first-of-type) {
+                margin-left: 1.5em;
+            }`;
+    }}
 
     img:hover { 
         cursor: pointer;
@@ -28,16 +43,16 @@ export const Item = styled(ListGroup.Item)`
     }
 
     .card {
-        height: 25vh;
-        width: 20vw;
+        height: ${props => props.favorites ? '15vh' : '25vh'};
+        width: ${props => props.favorites ? ' 18vw' : '20vw'};
         border-radius: 1em;
         border: none;
         
     }
 
     .card-img-top {
-        height: 60%;
-        border-radius: 1em 1em 0 0;
+        height: ${props => props.favorites ? '100%' : '60%'};
+        border-radius: ${props => props.favorites ? '1em' : '1em 1em 0 0'};
         object-fit: cover;
         object-position: 100%;
     }

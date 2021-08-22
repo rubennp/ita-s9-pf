@@ -7,7 +7,7 @@ const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
         <Container>
             <RecommendedOrSearched>
                 <h3>{search === '' ? "Recommended" : "Searched"}  videos</h3>
-                <VideoList 
+                <VideoList
                     list={list.items} 
                     handleVideoSelect={handleSelect} 
                     videoLiked={videoLiked} 
@@ -18,12 +18,14 @@ const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
                 <h3>Last searches</h3>
             </LastViewed>
             <Favorites>
-                <h3>Favorites videos</h3>
-                <ul>
-                    {videoLiked.map((video, idx) => {
-                        return <li key={idx}>{video.snippet.title}</li>;
-                    })}
-                </ul>
+                <h3>Favorites videos · {videoLiked.length}</h3>
+                <VideoList
+                    favorites                    
+                    list={videoLiked}
+                    handleVideoSelect={handleSelect}
+                    videoLiked={videoLiked}
+                    handleVideoLiked={handleVideoLiked}
+                />
             </Favorites>
         </Container>
     );
