@@ -6,7 +6,7 @@ const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
     return (
         <Container>
             <RecommendedOrSearched>
-                <h3>{search === '' ? "Recommended" : "Searched"}  videos</h3>
+                <h3>{search === '' ? "Recommended videos" : `Videos from your search "${search}"`}</h3>
                 <VideoList
                     list={list.items} 
                     handleVideoSelect={handleSelect} 
@@ -18,7 +18,7 @@ const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
                 <h3>Last searches</h3>
             </LastViewed>
             <Favorites>
-                <h3>Favorites videos · {videoLiked.length}</h3>
+                <h3>Liked videos{videoLiked.length > 0 && ` · ${videoLiked.length}`}</h3>
                 <VideoList
                     favorites                    
                     list={videoLiked}

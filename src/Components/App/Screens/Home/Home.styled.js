@@ -23,4 +23,9 @@ export const LastViewed = styled.section`
 
 export const Favorites = styled.section`
     grid-area: favorites;
+
+    small { 
+        font-weight: normal;
+        font-size: .75em;
+    }
 `;

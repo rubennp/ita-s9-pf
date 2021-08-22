@@ -67,7 +67,9 @@ const App = () => {
             { videoSearch && <Home search={search} list={videoSearch} handleSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/> }
           </Route>
           <Route path="/history" component={History} />
-          <Route path="/liked" component={Liked} />
+          <Route path="/liked">
+            <Liked list={videoLiked} handleVideoSelect={handleVideoSelect} handleVideoLiked={handleVideoLiked} />
+          </Route>
           <Route path="/saved" component={Saved} />
           <Route path="/video">
             <Video selected={videoSelected} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/>

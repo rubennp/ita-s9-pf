@@ -9,9 +9,9 @@ import { Item, Info, Overlay } from './VideoItem.styled';
 
 import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
 
-const VideoItem = ({favorites, video, handleVideoSelect, videoLiked, handleVideoLiked}) => {
+const VideoItem = ({page, favorites, video, handleVideoSelect, videoLiked, handleVideoLiked}) => {
     return (
-        <Item favorites={favorites} as="li">
+        <Item page={page} favorites={favorites} as="li">
             <Card>
                 <Card.Img onClick={()=> {
                     handleVideoSelect(video);

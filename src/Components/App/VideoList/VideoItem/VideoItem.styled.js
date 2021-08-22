@@ -24,16 +24,28 @@ export const Info = styled.div`
 
 export const Item = styled(ListGroup.Item)`
     ${props => {
-        return props.favorites ?
-            `&:nth-child(even) { 
-                margin-left: .5em;
-            }
-            margin-bottom: .5em;
-            `
-        :
-            `&:not(:first-of-type) {
-                margin-left: 1.5em;
-            }`;
+        if (props.favorites) {
+            return (
+                `&:nth-child(even) { 
+                    margin-left: .5em;
+                }
+                margin-bottom: .5em;
+                `
+            );
+        } else if (props.page) {
+            return (
+                `&:not(:nth-child(3n+1)) {
+                    margin-left: 2em;
+                }
+                margin-bottom: 1em;`
+            );
+        } else {
+            return (
+                `&:not(:first-of-type) {
+                    margin-left: 1.5em;
+                }`
+            );
+        }     
     }}
 
     img:hover { 

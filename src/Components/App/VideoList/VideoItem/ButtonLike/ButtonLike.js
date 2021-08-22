@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+
+import { Button } from './ButtonLike.styled';
 
 import { Heart, HeartFill } from 'react-bootstrap-icons';
 
@@ -25,12 +26,5 @@ const ButtonLike = ({favorites, video, videoLiked, handleVideoLiked}) => {
         </Button>
     );
 };
-
-const Button = styled.button`
-    border: unset;
-    background-color: unset;
-
-    ${props => { if (props.favorites) return 'filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1));'; }}
-`;
 
 export default ButtonLike;
