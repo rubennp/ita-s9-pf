@@ -10,10 +10,21 @@ const Video = ({selected, handleVideoSelect, videoLiked, handleVideoLiked}) => {
 
     return (
         <Container>
-            <VideoDetail video={selected} />
+            <VideoDetail 
+                video={selected}
+                videoLiked={videoLiked}
+                handleVideoLiked={handleVideoLiked}
+            />
             <Related>
                 <h3>Related</h3>
-                {related && <VideoList list={related.items} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked} /> }
+                {related && 
+                    <VideoList 
+                        list={related.items} 
+                        handleVideoSelect={handleVideoSelect} 
+                        videoLiked={videoLiked} 
+                        handleVideoLiked={handleVideoLiked}
+                    /> 
+                }
             </Related>
         </Container>
     );

@@ -1,6 +1,7 @@
 import * as S from './VideoDetail.styled';
+import ButtonLike from '../../../VideoList/VideoItem/ButtonLike';
 
-const VideoDetail = ({video}) => {
+const VideoDetail = ({video, videoLiked, handleVideoLiked}) => {
     return (
         <S.Detail>
             <S.Video
@@ -14,6 +15,11 @@ const VideoDetail = ({video}) => {
             <S.Info>
                 <h2>{video.snippet.title}</h2>
                 <p>{video.snippet.description}</p>
+                <ButtonLike 
+                    video={video} 
+                    videoLiked={videoLiked} 
+                    handleVideoLiked={handleVideoLiked} 
+                />
             </S.Info>
         </S.Detail>
     );

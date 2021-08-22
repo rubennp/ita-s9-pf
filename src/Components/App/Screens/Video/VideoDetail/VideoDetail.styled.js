@@ -20,19 +20,32 @@ export const Video = styled.iframe`
 `;
 
 export const Info = styled.div`
+    display: flex;
+    flex-direction: column;
     grid-area: video-info;
     color: black;
+    text-align: justify;
 
     h2 { 
         font-size: 1.5em; 
         font-weight: bold;
+        margin-bottom: .75em;
     }
 
     p { 
         font-size: 1em;
         font-weight: 500;
         color: #495057;
-        margin-bottom: 0; 
+        margin-bottom: 0;
     }
 
+    button {
+        margin-top: auto;
+        align-self: flex-end;
+
+        svg { 
+            width: 32px !important; 
+            height: 32px !important;
+        }
+    }
 `;
