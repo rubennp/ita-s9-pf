@@ -8,7 +8,7 @@ const Liked = ({list, handleVideoLiked, handleVideoSelect}) => {
             { list.length === 0 ? 
                 <>
                     <h3>Nothing to show you.</h3>
-                    <h3><small>You don't have any liked video yet!</small></h3> 
+                    <h3><small>You don't have any liked video, yet!</small></h3> 
                 </>
                 :
                 <h3>You have {list.length} video{list.length > 1 ? 's' : ''} you like:</h3>

@@ -8,7 +8,7 @@ const VideoList = ({page, favorites, list, handleVideoSelect, videoLiked, handle
     return (
         <List page={page} favorites={favorites} videoLiked={videoLiked} variant="flush" as="ul">
             {(favorites && list.length === 0) &&
-                <small>{"You haven't any liked video yet!"}</small>
+                <small>{"You don't have any liked video, yet!"}</small>
             }
             {list.map((video, idx) => {
                 return (

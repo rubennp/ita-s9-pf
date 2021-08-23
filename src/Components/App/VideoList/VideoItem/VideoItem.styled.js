@@ -7,7 +7,7 @@ export const Overlay = styled.div`
     position: absolute;
     left: 75%;
     height: 100%;
-    width: 26.1%;
+    width: 26%;
     background-color: rgba(0, 0, 0, .75);
     border-radius: 0 1em 1em 0;
 `;

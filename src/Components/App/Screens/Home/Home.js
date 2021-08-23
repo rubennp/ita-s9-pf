@@ -1,8 +1,10 @@
+import Moment from 'react-moment';
+
 import { Container, RecommendedOrSearched, LastViewed, Favorites } from "./Home.styled";
 
 import VideoList from '../../VideoList';
 
-const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
+const Home = ({search, searches, list, handleSelect, videoLiked, handleVideoLiked}) => {
     return (
         <Container>
             <RecommendedOrSearched>
@@ -16,6 +18,11 @@ const Home = ({search, list, handleSelect, videoLiked, handleVideoLiked}) => {
             </RecommendedOrSearched>
             <LastViewed>
                 <h3>Last searches</h3>
+                <ul>
+                    {searches.map((s, idx) => {
+                        return (s.search !== "") && <li key={idx}><Moment fromNow>{s.date}</Moment>: "{s.search}"</li>;
+                    })}
+                </ul>
             </LastViewed>
             <Favorites>
                 <h3>Liked videos{videoLiked.length > 0 && ` · ${videoLiked.length}`}</h3>

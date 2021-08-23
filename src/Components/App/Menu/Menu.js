@@ -16,7 +16,6 @@ const menu =
     { what: "Home", icon: <HomeIcon/>, route: "home" },
     { what: "History", icon: <HistoryIcon/>, route: "history" },
     { what: "Liked", icon: <LikedIcon/>, route: "liked" },
-    { what: "Saved", icon: <SavedIcon/>, route: "saved" },
 ];
 
 const Menu = () => {

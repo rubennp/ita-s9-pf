@@ -12,7 +12,6 @@ import Menu from './Menu';
 import Home from './Screens/Home';
 import History from './Screens/History';
 import Liked from './Screens/Liked';
-import Saved from './Screens/Saved';
 import Video from './Screens/Video';
 
 // Hooks
@@ -25,8 +24,14 @@ const App = () => {
   const history = useHistory();
 
   // state
-  const [lastSearch, setLastSearch] = useState(null);
   const [search, setSearch] = useState('');
+  const [lastSearch, setLastSearch] = useState(null);
+  const [searches, setSearches] = useState([{
+    search: "",
+    imgUrl: "",
+    videos: [],
+    date: null,
+  }]);
   const [videoSelected, setVideoSelected] = useState(null);
   const [videoLiked, setVideoLiked] = useState([]);
   
@@ -39,12 +44,38 @@ const App = () => {
 
   const handleSubmit = search => {
     setSearch(search);
-    if (search !== '') setLastSearch(search); 
+    if (search !== '') setLastSearch(search);
   };
 
   const handleVideoSelect = video => { 
     setVideoSelected(video); 
   };
+
+  useEffect(function onLastValidSearch() {
+    if (videoSearch && lastSearch) {
+      if (searches.filter(s => s.search === lastSearch).length === 0) {
+        if (searches[0].search === "" || null) {
+          setSearches([{
+            search: lastSearch,
+            imgUrl: videoSearch.items[0].snippet.thumbnails.default.url,
+            videos: videoSearch.items,
+            date: new Date()
+          }]);
+        } 
+        else {
+          setSearches(prevSearches => [
+            {
+              search: lastSearch,
+              imgUrl: videoSearch.items[0].snippet.thumbnails.default.url,
+              videos: videoSearch.items, 
+              date: new Date()
+            },
+            ...prevSearches, 
+          ]);
+        }
+      }
+    }
+  }, [videoSearch]);
 
   useEffect(function onVideoSelected(){
     history.push('/video');
@@ -56,21 +87,30 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoSearch]); 
 
+  console.log(searches);
+  console.log(videoSearch);
   return (
     <Main fluid>
       <Menu />
       <SearchBar search={search} handleSubmit={handleSubmit}/>
       <Screen>
         <Switch>
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/home"/>
           <Route path="/home">
-            { videoSearch && <Home search={search} list={videoSearch} handleSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/> }
+            {videoSearch && 
+              <Home 
+                search={search}
+                searches={searches}
+                list={videoSearch}
+                handleSelect={handleVideoSelect}
+                videoLiked={videoLiked}
+                handleVideoLiked={handleVideoLiked}
+            />}
           </Route>
-          <Route path="/history" component={History} />
+          <Route path="/history" component={History}/>
           <Route path="/liked">
             <Liked list={videoLiked} handleVideoSelect={handleVideoSelect} handleVideoLiked={handleVideoLiked} />
           </Route>
-          <Route path="/saved" component={Saved} />
           <Route path="/video">
             <Video selected={videoSelected} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/>
           </Route>
