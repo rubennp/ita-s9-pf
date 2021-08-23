@@ -7,6 +7,8 @@ export const List = styled.ul`
     font-size: .9em;
     background-color: #252130;
     border-radius: 1em;
+    height: 48vh;
+    overflow-y: auto;
 `;
 
 export const Item = styled.li`
@@ -16,9 +18,8 @@ export const Item = styled.li`
     padding: 1em;
     margin: 0;
     font-size: .9em;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
     
-    &:not(:last-of-type) { border-bottom: 1px solid rgba(255, 255, 255, .1); }
-
     p {
         display: inline;
         color: white;

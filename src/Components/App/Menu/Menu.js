@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { 
     ColumnsGap as HomeIcon, 
     ClockHistory as HistoryIcon, 
-    HeartFill as LikedIcon,
-    BookmarkFill as SavedIcon
+    HeartFill as LikedIcon
 } from 'react-bootstrap-icons';
 
 import { MenuContainer, MenuLogo, MenuNav, Nav, Img } from './Menu.styled';

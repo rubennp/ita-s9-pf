@@ -4,7 +4,17 @@ import VideoItem from './VideoItem';
 // Styled Components
 import { List } from './VideoList.styled';
 
-const VideoList = ({page, favorites, list, handleVideoSelect, videoLiked, handleVideoLiked}) => {
+/*
+ * VideoList(): component. Controls the lists of videos.
+ */
+const VideoList = ({
+    page, 
+    favorites, 
+    list, 
+    handleVideoSelect, 
+    videoLiked, 
+    handleVideoLiked
+}) => {
     return (
         <List page={page} favorites={favorites} videoLiked={videoLiked} variant="flush" as="ul">
             {(favorites && list.length === 0) &&

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Row, Col, InputGroup } from 'react-bootstrap';
 import { Search as SearchIcon } from 'react-bootstrap-icons';
 
@@ -11,8 +11,12 @@ import { SearchContainer } from './SearchBar.styled';
  * vistos los problemas con las cuotas de la API de youtube, capturo Enter para realizar fetch y que 
  * no realize tantas consultas a la API.
  */
-const SearchBar = ({ search, handleSubmit}) => {
+const SearchBar = ({search, handleSubmit}) => {
     const [value, setValue] = useState(search);
+
+    useEffect(function onSearchChange() {
+        setValue(search);
+    }, [search]);
 
     return (
         <SearchContainer fluid>

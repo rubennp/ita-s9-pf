@@ -36,22 +36,22 @@ const useGetVideoList = (from) => {
                     //     console.error(err.message);
                     // }
                 if (from.search !== '') {
-                    setVideoList({items: myapi.filteredItems(from.search) });
+                    setVideoList(myapi.filteredItems(from.search));
                 }
                 else {
-                    setVideoList({
-                        items: myapi.recommendedRes.items.map(item => {
+                    setVideoList( 
+                        myapi.recommendedRes.items.filter(item => {
                             return { id: item.id, snippet: item.snippet};
                         })
-                    });
+                    );
                 }
                 break;
             case 'RELATED':
-                setVideoList({
-                    items: myapi.relatedRes.items.map(item => {
+                setVideoList(prev =>
+                    myapi.relatedRes.items.filter(item => {
                         return { id: item.id.videoId, snippet: item.snippet };
                     })
-                });
+                );
                 break;
             default:
                 break;

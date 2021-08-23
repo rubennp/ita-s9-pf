@@ -32,7 +32,15 @@ export const SearchContainer = styled(Container)`
         display: block;
         margin: 1em 0 0;
 
-        kbd { background-color: rgba(255, 255, 255, .3)}
+        kbd { 
+            padding: .4em .3em;
+            border-radius: .3em;
+            margin: 0 .25em;
+            background-color: rgba(255, 255, 255, .5);
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 1));
+            color: black;
+            font-weight: bold;
+        }
 
         transition: all 1s;
     }

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useEffect, useState } from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 
@@ -23,20 +25,19 @@ import useGetVideoList from '../../hooks';
 const App = () => {
   const history = useHistory();
 
-  // state
+  // State
   const [search, setSearch] = useState('');
   const [lastSearch, setLastSearch] = useState(null);
-  const [searches, setSearches] = useState([{
-    search: "",
-    imgUrl: "",
-    videos: [],
-    date: null,
-  }]);
+  const [searches, setSearches] = useState(null);
   const [videoSelected, setVideoSelected] = useState(null);
   const [videoLiked, setVideoLiked] = useState([]);
+  const [videoList, setVideoList] = useState(null);
+  const [fromSavedSearch, setFromSavedSearch] = useState(null);
   
+  // on search change: fetch search
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
 
+  // Handles
   const handleVideoLiked = (video, like) => {
     if (like) setVideoLiked(prev => [...prev, video]);
     else setVideoLiked(prev => prev.filter(v => v.id !== video.id));
@@ -51,41 +52,64 @@ const App = () => {
     setVideoSelected(video); 
   };
 
+  const handleDelSearch = (idx) => {
+    setSearches(prevSearches => {
+      const newSearches = prevSearches.filter((el, pos) => idx !== pos);
+      if (newSearches === []) return null;
+      else return newSearches;
+    });
+  };
+
+  const handleRepeatSearch = (idx) => {
+    handleSubmit(searches[idx].search);
+  };
+
+  const handleLoadSearch = (idx) => {
+    setFromSavedSearch(searches[idx].search);
+    setVideoList(searches[idx].videos);
+  };
+
+  const handleExitFromSavedList = () => {
+    setFromSavedSearch(null);
+  };
+
+  // Effects
   useEffect(function onLastValidSearch() {
-    if (videoSearch && lastSearch) {
-      if (searches.filter(s => s.search === lastSearch).length === 0) {
-        if (searches[0].search === "" || null) {
-          setSearches([{
+    if ((videoSearch && search !== '') && lastSearch) {
+      handleExitFromSavedList();
+      if (!searches) {
+        setSearches([{
+          search: lastSearch,
+          imgUrl: videoSearch[0].snippet.thumbnails.default.url,
+          videos: videoSearch,
+          date: new Date()
+        }]);
+      } 
+      else {
+        setSearches(prevSearches => [
+          {
             search: lastSearch,
-            imgUrl: videoSearch.items[0].snippet.thumbnails.default.url,
-            videos: videoSearch.items,
+            imgUrl: videoSearch[0].snippet.thumbnails.default.url,
+            videos: videoSearch, 
             date: new Date()
-          }]);
-        } 
-        else {
-          setSearches(prevSearches => [
-            {
-              search: lastSearch,
-              imgUrl: videoSearch.items[0].snippet.thumbnails.default.url,
-              videos: videoSearch.items, 
-              date: new Date()
-            },
-            ...prevSearches, 
-          ]);
-        }
+          },
+          ...prevSearches, 
+        ]);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    setVideoList(videoSearch);
   }, [videoSearch]);
 
+  /*
+   * REDIRECTS on ACTION
+   */
   useEffect(function onVideoSelected(){
     history.push('/video');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoSelected]);
 
   useEffect(function onSearch() {
     history.push('/home');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoSearch]); 
 
   return (
@@ -99,11 +123,16 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="/home"/>
           <Route path="/home">
-            {videoSearch && 
+            {videoList &&
               <Home 
                 search={search}
                 searches={searches}
-                list={videoSearch}
+                handleDelSearch={handleDelSearch}
+                handleRepeatSearch={handleRepeatSearch}
+                handleLoadSearch={handleLoadSearch}
+                fromSavedSearch={fromSavedSearch}
+                handleExitFromSavedList={handleExitFromSavedList}
+                list={videoList}
                 handleSelect={handleVideoSelect}
                 videoLiked={videoLiked}
                 handleVideoLiked={handleVideoLiked}
