@@ -75,6 +75,7 @@ const App = () => {
         }
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoSearch]);
 
   useEffect(function onVideoSelected(){
@@ -87,12 +88,13 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoSearch]); 
 
-  console.log(searches);
-  console.log(videoSearch);
   return (
     <Main fluid>
       <Menu />
-      <SearchBar search={search} handleSubmit={handleSubmit}/>
+      <SearchBar 
+        search={search}
+        handleSubmit={handleSubmit}
+      />
       <Screen>
         <Switch>
           <Redirect exact from="/" to="/home"/>
@@ -109,10 +111,19 @@ const App = () => {
           </Route>
           <Route path="/history" component={History}/>
           <Route path="/liked">
-            <Liked list={videoLiked} handleVideoSelect={handleVideoSelect} handleVideoLiked={handleVideoLiked} />
+            <Liked 
+              list={videoLiked} 
+              handleVideoSelect={handleVideoSelect} 
+              handleVideoLiked={handleVideoLiked}
+            />
           </Route>
           <Route path="/video">
-            <Video selected={videoSelected} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/>
+            <Video 
+              selected={videoSelected}
+              handleVideoSelect={handleVideoSelect}
+              videoLiked={videoLiked}
+              handleVideoLiked={handleVideoLiked}
+            />
           </Route>
         </Switch>
       </Screen>
