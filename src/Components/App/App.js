@@ -112,9 +112,7 @@ const App = () => {
   useEffect(function onSearch() {
     history.push('/home');
   }, [videoSearch]); 
-
-  console.log(videoList);
-  console.log(videoSelected);
+  
   return (
     <Main fluid>
       <Menu />
@@ -139,7 +137,9 @@ const App = () => {
                 handleSelect={handleVideoSelect}
                 videoLiked={videoLiked}
                 handleVideoLiked={handleVideoLiked}
-            />}
+              />
+            }
+          </Route>
           <Route path="/video">
             <Video 
               selected={videoSelected}
@@ -147,7 +147,6 @@ const App = () => {
               videoLiked={videoLiked}
               handleVideoLiked={handleVideoLiked}
             />
-          </Route>
           </Route>
           <Route path="/history" component={History}/>
           <Route path="/liked">

@@ -39,14 +39,14 @@ const useGetVideoList = (from) => {
                     setVideoList(myapi.filteredItems(from.search));
                 }
                 else {
-                    setVideoList(myapi.recommendedRes.items.filter(item => {
+                    setVideoList(myapi.recommendedRes.items.map(item => {
                             return { id: item.id, snippet: item.snippet};
                         })
                     );
                 }
                 break;
             case 'RELATED':
-                setVideoList(myapi.relatedRes.items.filter(item => {
+                setVideoList(myapi.relatedRes.items.map(item => {
                         return { id: item.id.videoId, snippet: item.snippet };
                     })
                 );

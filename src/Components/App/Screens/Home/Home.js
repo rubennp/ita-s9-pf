@@ -23,6 +23,7 @@ const Home = ({
     useEffect(() => {
         setListFromSaved(null);
         handleExitFromSavedList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(function onComingFromSaved() {

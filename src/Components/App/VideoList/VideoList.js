@@ -20,7 +20,7 @@ const VideoList = ({
             {(favorites && list.length === 0) &&
                 <small>{"You don't have any liked video, yet!"}</small>
             }
-            {list.map((video, idx) => {
+            {list && list.map((video, idx) => {
                 return (
                     <VideoItem
                         page={page}

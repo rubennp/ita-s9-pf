@@ -10,8 +10,7 @@ const VideoDetail = ({video, videoLiked, handleVideoLiked}) => {
                 type="text/html"
                 src={`http://www.youtube.com/embed/${video.id}?enablejsapi=1&origin=http://localhost:3000`}
                 frameBorder="0"
-            >
-            </S.Video>
+            />
             <S.Info>
                 <h2>{video.snippet.title}</h2>
                 <p>{video.snippet.description}</p>

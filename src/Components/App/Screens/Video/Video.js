@@ -5,7 +5,12 @@ import { Container, Related } from './Video.styled.js';
 import VideoDetail from './VideoDetail';
 import VideoList from '../../VideoList';
 
-const Video = ({selected, handleVideoSelect, videoLiked, handleVideoLiked}) => {
+const Video = ({
+    selected, 
+    handleVideoSelect, 
+    videoLiked, 
+    handleVideoLiked
+}) => {
     const related = useGetVideoList({action: 'RELATED', video: selected}, [selected]);
 
     return (
@@ -19,7 +24,7 @@ const Video = ({selected, handleVideoSelect, videoLiked, handleVideoLiked}) => {
                 <h3>Related</h3>
                 {related && 
                     <VideoList 
-                        list={related.items} 
+                        list={related} 
                         handleVideoSelect={handleVideoSelect} 
                         videoLiked={videoLiked} 
                         handleVideoLiked={handleVideoLiked}
