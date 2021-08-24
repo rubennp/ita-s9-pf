@@ -14,6 +14,7 @@ import Menu from './Menu';
 import Home from './Screens/Home';
 import History from './Screens/History';
 import Liked from './Screens/Liked';
+import Searches from './Screens/Searches';
 import Video from './Screens/Video';
 
 // Hooks
@@ -137,6 +138,14 @@ const App = () => {
                 videoLiked={videoLiked}
                 handleVideoLiked={handleVideoLiked}
             />}
+          <Route path="/video">
+            <Video 
+              selected={videoSelected}
+              handleVideoSelect={handleVideoSelect}
+              videoLiked={videoLiked}
+              handleVideoLiked={handleVideoLiked}
+            />
+          </Route>
           </Route>
           <Route path="/history" component={History}/>
           <Route path="/liked">
@@ -146,14 +155,7 @@ const App = () => {
               handleVideoLiked={handleVideoLiked}
             />
           </Route>
-          <Route path="/video">
-            <Video 
-              selected={videoSelected}
-              handleVideoSelect={handleVideoSelect}
-              videoLiked={videoLiked}
-              handleVideoLiked={handleVideoLiked}
-            />
-          </Route>
+          <Route path="/searches" component={Searches}/>
         </Switch>
       </Screen>
     </Main>

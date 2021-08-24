@@ -55,7 +55,8 @@ export const Nav = styled(Navigation)`
     svg { margin-right: 1em;}
 
     & li { 
-        color: white !important; 
+        color: white !important;
+        margin-bottom: .5em;
 
         &:hover {
             cursor: pointer;

@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { 
     ColumnsGap as HomeIcon, 
     ClockHistory as HistoryIcon, 
-    HeartFill as LikedIcon
+    HeartFill as LikedIcon,
+    Search as SavedIcon,
 } from 'react-bootstrap-icons';
 
 import { MenuContainer, MenuLogo, MenuNav, Nav, Img } from './Menu.styled';
@@ -14,7 +15,8 @@ const menu =
 [
     { what: "Home", icon: <HomeIcon/>, route: "home" },
     { what: "History", icon: <HistoryIcon/>, route: "history" },
-    { what: "Liked", icon: <LikedIcon/>, route: "liked" },
+    { what: "Liked videos", icon: <LikedIcon/>, route: "liked" },
+    { what: "Searches", icon: <SavedIcon/>, route: "searches" },
 ];
 
 const Menu = () => {
