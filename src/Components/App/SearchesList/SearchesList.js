@@ -42,8 +42,8 @@ const SearchesList = ({
     }, [action]);
 
     return (
-        <List>
-            {list.map((li, idx) => {
+        <List list={list}>
+            {list ? list.map((li, idx) => {
                 return li.date && (
                     <Item key={idx}>
                         <Info>
@@ -75,7 +75,10 @@ const SearchesList = ({
                         </Actions>
                     </Item>
                 );
-            })}
+            })
+            :
+            <li><small>You don't make any search, yet!</small></li> 
+            }
         </List>
     );
 };

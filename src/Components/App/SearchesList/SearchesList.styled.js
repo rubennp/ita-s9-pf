@@ -9,6 +9,13 @@ export const List = styled.ul`
     border-radius: 1em;
     height: 48vh;
     overflow-y: auto;
+
+    ${props => !props.list && 
+        `display: flex;
+         justify-content: center;
+         align-items: center;
+         color: rgba(255, 255, 255, .5);`
+    }
 `;
 
 export const Item = styled.li`

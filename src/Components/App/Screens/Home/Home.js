@@ -46,7 +46,7 @@ const Home = ({
             </RecommendedOrSearched>
             <LastViewed>
                 <h3>Last searches</h3>
-                {searches && <SearchesList 
+                {<SearchesList 
                     list={searches} 
                     handleDelSearch={handleDelSearch}
                     handleRepeatSearch={handleRepeatSearch}

@@ -5,7 +5,7 @@ export const SearchContainer = styled(Container)`
     grid-area: search;
     padding: 1em;
     padding-right: 2em;
-
+    
     * {
         color: rgba(255, 255, 255, .8);
         background: unset;
