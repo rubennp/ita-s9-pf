@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Container, RecommendedOrSearched, LastViewed, Favorites } from "./Home.styled";
 
 import VideoList from '../../VideoList';
@@ -17,16 +18,22 @@ const Home = ({
     videoLiked, 
     handleVideoLiked
 }) => {
+    const [listFromSaved, setListFromSaved] = useState(null);
 
     useEffect(() => {
+        setListFromSaved(null);
         handleExitFromSavedList();
     }, []);
+
+    useEffect(function onComingFromSaved() {
+        setListFromSaved(fromSavedSearch);
+    }, [fromSavedSearch]);
 
     return (
         <Container>
             <RecommendedOrSearched>
-                { fromSavedSearch ? 
-                    <h3>Videos from your saved list "{fromSavedSearch}"</h3>
+                { listFromSaved ? 
+                    <h3>Videos from your saved list "{listFromSaved}"</h3>
                 : 
                     <h3>{search === '' ? "Recommended videos" : `Videos from your search "${search}"`}</h3>
                 }
