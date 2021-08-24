@@ -113,6 +113,8 @@ const App = () => {
     history.push('/home');
   }, [videoSearch]); 
 
+  console.log(videoList);
+  console.log(videoSelected);
   return (
     <Main fluid>
       <Menu />
@@ -155,7 +157,15 @@ const App = () => {
               handleVideoLiked={handleVideoLiked}
             />
           </Route>
-          <Route path="/searches" component={Searches}/>
+          <Route path="/searches">
+            <Searches 
+              searches={searches}
+              handleDelSearch={handleDelSearch}
+              handleVideoSelect={handleVideoSelect}
+              videoLiked={videoLiked}
+              handleVideoLiked={handleVideoLiked}
+            />
+          </Route>
         </Switch>
       </Screen>
     </Main>

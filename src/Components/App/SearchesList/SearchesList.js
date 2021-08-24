@@ -45,7 +45,7 @@ const SearchesList = ({
         <List list={list}>
             {list ? list.map((li, idx) => {
                 return li.date && (
-                    <Item key={idx}>
+                    <Item key={`searchlist-item-${idx}`}>
                         <Info>
                             <Image height="50" width="50" roundedCircle src={li.imgUrl}/>
                             <p>{li.search} · <Moment fromNow>{li.date}</Moment></p>;
@@ -54,7 +54,7 @@ const SearchesList = ({
                             {buttons.map(button => {
                                 return (
                                     <OverlayTrigger
-                                        key={action.id}
+                                        key={`searchlist-item-${button.id}`}
                                         placement="top"
                                         delay={{ show: 150, hide: 150 }}
                                         overlay={
