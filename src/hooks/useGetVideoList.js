@@ -37,8 +37,7 @@ const useGetVideoList = (from) => {
                     // }
                 if (from.search !== '') {
                     setVideoList(myapi.filteredItems(from.search));
-                }
-                else {
+                } else {
                     setVideoList(myapi.recommendedRes.items.map(item => {
                             return { id: item.id, snippet: item.snippet};
                         })
@@ -48,6 +47,12 @@ const useGetVideoList = (from) => {
             case 'RELATED':
                 setVideoList(myapi.relatedRes.items.map(item => {
                         return { id: item.id.videoId, snippet: item.snippet };
+                    })
+                );
+                break;
+            case 'RECOMMENDED':
+                setVideoList(myapi.recommendedRes.items.map(item => {
+                        return { id: item.id, snippet: item.snippet};
                     })
                 );
                 break;

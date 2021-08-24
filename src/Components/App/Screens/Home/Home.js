@@ -1,10 +1,26 @@
-import { useState } from 'react';
-import { Container, RecommendedOrSearched, LastViewed, Favorites } from "./Home.styled";
+import { useState, useEffect } from 'react';
 
+// Styled & Bootstrap Components
+import { 
+    Container, 
+    RecommendedOrSearched, 
+    SavedList,
+    ExitButton, 
+    LastSearches, 
+    Favorites 
+} from "./Home.styled";
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
+// Components
 import VideoList from '../../VideoList';
 import SearchesList from '../../SearchesList';
-import { useEffect } from "react";
 
+// Icons
+import { BoxArrowUpRight as ExitIcon } from 'react-bootstrap-icons';
+
+/*
+ * Home() : Component Home Screen
+ */
 const Home = ({
     search, 
     searches, 
@@ -34,7 +50,23 @@ const Home = ({
         <Container>
             <RecommendedOrSearched>
                 { listFromSaved ? 
-                    <h3>Videos from your saved list "{listFromSaved}"</h3>
+                    <SavedList>
+                        <h3>Videos from your saved list "{listFromSaved}"</h3>
+                        <OverlayTrigger 
+                            key="savedlist-exitbutton"
+                            placement="left"
+                            delay={{ show: 150, hide: 150 }}
+                            overlay={
+                                <Tooltip id={`tooltip-savedlist-exitbutton`}>
+                                    <small>Exit from saved list</small>
+                                </Tooltip>
+                            }
+                        >
+                            <ExitButton variant="secondary" size="sm" onClick={() => handleExitFromSavedList()}>
+                                <ExitIcon/>
+                            </ExitButton>
+                        </OverlayTrigger>
+                    </SavedList> 
                 : 
                     <h3>{search === '' ? "Recommended videos" : `Videos from your search "${search}"`}</h3>
                 }
@@ -45,7 +77,7 @@ const Home = ({
                     handleVideoLiked={handleVideoLiked} 
                 />
             </RecommendedOrSearched>
-            <LastViewed>
+            <LastSearches>
                 <h3>Last searches</h3>
                 {<SearchesList 
                     list={searches} 
@@ -53,7 +85,7 @@ const Home = ({
                     handleRepeatSearch={handleRepeatSearch}
                     handleLoadSearch={handleLoadSearch}
                 />}
-            </LastViewed>
+            </LastSearches>
             <Favorites>
                 <h3>Liked videos{videoLiked.length > 0 && ` · ${videoLiked.length}`}</h3>
                 <VideoList

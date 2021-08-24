@@ -37,6 +37,7 @@ const App = () => {
   
   // on search change: fetch search
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
+  const recommendedVideos = useGetVideoList({action: 'RECOMMENDED'});
 
   // Handles
   const handleVideoLiked = (video, like) => {
@@ -72,12 +73,13 @@ const App = () => {
 
   const handleExitFromSavedList = () => {
     setFromSavedSearch(null);
+    setSearch('');
+    setVideoList(recommendedVideos);
   };
 
   // Effects
   useEffect(function onLastValidSearch() {
     if ((videoSearch && search !== '') && lastSearch) {
-      handleExitFromSavedList();
       if (!searches) {
         setSearches([{
           search: lastSearch,
@@ -112,13 +114,14 @@ const App = () => {
   useEffect(function onSearch() {
     history.push('/home');
   }, [videoSearch]); 
-  
+
   return (
     <Main fluid>
       <Menu />
       <SearchBar 
         search={search}
         handleSubmit={handleSubmit}
+        handleExitFromSavedList={handleExitFromSavedList}
       />
       <Screen>
         <Switch>

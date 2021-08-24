@@ -8,7 +8,13 @@ import { ScreenContainer, ListContainer } from './Searches.styled';
 import { Button } from 'react-bootstrap';
 
 // Icons
-import { Trash as IconDel } from 'react-bootstrap-icons';
+import { 
+    Trash as IconDel,
+    Calendar as IconDay,
+    Clock as IconTime,
+    HourglassSplit as IconFromNow,
+    Search as IconSearch,
+} from 'react-bootstrap-icons';
 
 const Searches = ({
     searches,
@@ -23,7 +29,15 @@ const Searches = ({
                 return (
                     <ListContainer key={idx}>
                         <div>
-                            <p>"{search.search}" <small>(<Moment format="DD/MM/YYYY - HH:mm">{search.date}</Moment>)</small></p>
+                            <p>
+                                <IconDay />
+                                <Moment format="DD/MM/YYYY">{search.date}</Moment>
+                                <IconTime />
+                                <Moment format="HH:mm">{search.date}</Moment>
+                                <IconFromNow />
+                                <Moment fromNow>{search.date}</Moment>
+                            </p>
+                            <p><IconSearch />{search.search}</p>
                             <Button variant="danger" size="sm"><IconDel size={12} onClick={() => {
                                 handleDelSearch(idx);
                             }}/></Button>

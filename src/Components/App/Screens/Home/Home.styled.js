@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'react-bootstrap';
 
 export const Container = styled.section`
     grid-area: home;
@@ -17,7 +18,30 @@ export const RecommendedOrSearched = styled.section`
     grid-area: recommendedOrSearched;
 `;
 
-export const LastViewed = styled.section`
+export const SavedList = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5em;
+`;
+
+export const ExitButton = styled(Button)`
+    margin-left: .5em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    height: 2em;
+    width: 2em;
+
+    svg { 
+        padding: .1em;
+        margin-left: .2em;
+        overflow: visible;
+    }
+`;
+
+export const LastSearches = styled.section`
     grid-area: lastViewed;
 `;
 

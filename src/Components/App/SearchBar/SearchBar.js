@@ -11,7 +11,7 @@ import { SearchContainer } from './SearchBar.styled';
  * vistos los problemas con las cuotas de la API de youtube, capturo Enter para realizar fetch y que 
  * no realize tantas consultas a la API.
  */
-const SearchBar = ({search, handleSubmit}) => {
+const SearchBar = ({search, handleSubmit, handleExitFromSavedList }) => {
     const [value, setValue] = useState(search);
 
     useEffect(function onSearchChange() {
@@ -29,7 +29,10 @@ const SearchBar = ({search, handleSubmit}) => {
                                 type="search" 
                                 placeholder="Your search here"
                                 value={value}
-                                onChange={e => { setValue(e.target.value)}}
+                                onChange={e => { 
+                                    if (e.target.value !== " ") 
+                                        setValue(e.target.value)
+                                }}
                                 onKeyDown={e => { 
                                     if (e.code === 'Enter') {
                                         handleSubmit(value);
@@ -37,6 +40,7 @@ const SearchBar = ({search, handleSubmit}) => {
                                     } else if (e.code === 'Escape') {
                                         setValue('');
                                         handleSubmit('');
+                                        handleExitFromSavedList();
                                         e.preventDefault();
                                     }
                                 }}
