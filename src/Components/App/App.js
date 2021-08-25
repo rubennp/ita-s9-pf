@@ -34,8 +34,8 @@ const App = () => {
   const [videoLiked, setVideoLiked] = useState([]);
   const [videoList, setVideoList] = useState(null);
   const [fromSavedSearch, setFromSavedSearch] = useState(null);
+  const [lastViewedVideos, setLastViewedVideos] = useState(null);
   
-  // on search change: fetch search
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
   const recommendedVideos = useGetVideoList({action: 'RECOMMENDED'});
 
@@ -51,7 +51,11 @@ const App = () => {
   };
 
   const handleVideoSelect = video => { 
-    setVideoSelected(video); 
+    setVideoSelected(video);
+    setLastViewedVideos(prev => {
+      if (!lastViewedVideos) return [{viewedAt: new Date(), video: video}];
+      else return [{viewedAt: new Date(), video: video}, ...prev];
+    });
   };
 
   const handleDelSearch = (idx) => {
@@ -115,6 +119,7 @@ const App = () => {
     history.push('/home');
   }, [videoSearch]); 
 
+  console.log(lastViewedVideos);
   return (
     <Main fluid>
       <Menu />
