@@ -23,11 +23,10 @@ export const RecommendedOrSearched = styled.section`
     }
 `;
 
-export const SavedList = styled.div`
+export const SavedList = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: .5em;
 `;
 
 export const ExitButton = styled(Button)`
