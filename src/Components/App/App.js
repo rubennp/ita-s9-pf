@@ -35,7 +35,8 @@ const App = () => {
   const [videoList, setVideoList] = useState(null);
   const [fromSavedSearch, setFromSavedSearch] = useState(null);
   const [lastViewedVideos, setLastViewedVideos] = useState(null);
-  
+  const [videosFromYourSearches, setVideosFromYourSearches] = useState(null);
+
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
   const recommendedVideos = useGetVideoList({action: 'RECOMMENDED'});
 
@@ -85,6 +86,35 @@ const App = () => {
     setLastViewedVideos(null);
   };
 
+  const makeListFromYourSearches = () => {
+    const videosFromSearch = (search, howMany) => {
+      const randomNum = max => Math.floor(Math.random() * max);
+      const repeat = (func, times) => {
+        func();
+        times && --times && repeat(func, times);
+      };
+
+      if (search.videos.length > 2) {
+        let videosToExtractFrom = [...search.videos];
+        let randomVideos = [];
+
+        repeat(() => {
+          randomVideos = [...videosToExtractFrom.splice(randomNum(videosToExtractFrom.length), 1)];
+        }, howMany);
+        
+        return randomVideos;
+      } else {
+        return search.videos;
+      }
+    };
+
+    if (searches) return searches.map(search => {
+      return videosFromSearch(search, (searches.lenght > 5 ? 1 : 2));
+    }).flat();
+
+    else return null;
+  };
+
   // Effects
   useEffect(function onLastValidSearch() {
     if ((videoSearch && search !== '') && lastSearch) {
@@ -112,6 +142,10 @@ const App = () => {
     setVideoList(videoSearch);
   }, [videoSearch]);
 
+  useEffect(function onSearchesListChanges() {
+    setVideosFromYourSearches(makeListFromYourSearches());
+  }, [searches]);
+
   /*
    * REDIRECTS on ACTION
    */
@@ -122,6 +156,9 @@ const App = () => {
   useEffect(function onSearch() {
     history.push('/home');
   }, [videoSearch]); 
+
+  if (videosFromYourSearches) 
+    console.log(videosFromYourSearches);
 
   return (
     <Main fluid>

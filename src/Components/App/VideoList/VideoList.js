@@ -16,7 +16,6 @@ const VideoList = ({
     videoLiked, 
     handleVideoLiked
 }) => {
-    console.log(list);
     return (
         <List page={page} favorites={favorites} videoLiked={videoLiked} variant="flush" as="ul">
             {(favorites && list.length === 0) &&
