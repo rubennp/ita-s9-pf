@@ -13,7 +13,11 @@ export const ScreenContainer = styled.div`
                  align-items: center;
                  width: 100%;
                  height: 100%;
-                 h3 { margin-bottom: 1em;}`
+                 
+                 h3 { 
+                     color: rgba(255, 255, 255, .25);
+                     margin-bottom: 1em;
+                 }`
             );
         }
     }}
@@ -78,7 +82,10 @@ export const ListContainer = styled.div`
             height: 1.5em;
             width: 1.5em;
     
-            svg { overflow: visible; }
+            svg { 
+                margin-left: .1em;
+                overflow: visible; 
+            }
         }
     }
 `;

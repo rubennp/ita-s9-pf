@@ -5,7 +5,10 @@ export const Container = styled.section`
     width: 100%;
     height: 100%;
 
-    h3 { margin-bottom: 1em; }
+    h3 { 
+        color: rgba(255, 255, 255, .25);
+        margin-bottom: 1em; 
+    }
 
     ${props => (props.list.length === 0) &&
         `display: flex;

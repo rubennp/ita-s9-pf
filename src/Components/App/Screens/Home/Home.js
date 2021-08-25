@@ -70,12 +70,14 @@ const Home = ({
                 : 
                     <h3>{search === '' ? "Recommended videos" : `Videos from your search "${search}"`}</h3>
                 }
-                <VideoList
-                    list={list} 
-                    handleVideoSelect={handleSelect} 
-                    videoLiked={videoLiked} 
-                    handleVideoLiked={handleVideoLiked} 
-                />
+                <div>
+                    <VideoList
+                        list={list} 
+                        handleVideoSelect={handleSelect} 
+                        videoLiked={videoLiked} 
+                        handleVideoLiked={handleVideoLiked} 
+                    />
+                </div>
             </RecommendedOrSearched>
             <LastSearches>
                 <h3>Last searches</h3>

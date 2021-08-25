@@ -38,9 +38,9 @@ const Searches = ({
                                 <Moment fromNow>{search.date}</Moment>
                             </p>
                             <p><IconSearch />{search.search}</p>
-                            <Button variant="danger" size="sm"><IconDel size={12} onClick={() => {
+                            <Button variant="danger" size="sm" onClick={() => {
                                 handleDelSearch(idx);
-                            }}/></Button>
+                            }}><IconDel size={12}/></Button>
                         </div>
                         <VideoList list={search.videos} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/>
                     </ListContainer>

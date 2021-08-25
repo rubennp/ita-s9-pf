@@ -7,9 +7,19 @@ import { Card } from 'react-bootstrap';
 // Styled Components
 import { Item, Info, Overlay } from './VideoItem.styled';
 
+// Img & Icons
 import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
+import { Eye } from 'react-bootstrap-icons';
 
-const VideoItem = ({page, favorites, video, handleVideoSelect, videoLiked, handleVideoLiked}) => {
+const VideoItem = ({
+    fromLastViewed,
+    page, 
+    favorites, 
+    video, 
+    handleVideoSelect, 
+    videoLiked, 
+    handleVideoLiked
+}) => {
     return (
         <Item page={page} favorites={favorites} as="li">
             <Card>
@@ -29,7 +39,10 @@ const VideoItem = ({page, favorites, video, handleVideoSelect, videoLiked, handl
                     <Card.Body>
                         <Card.Title>{video.snippet.title}</Card.Title>
                         <Info>
-                            <div className="time"><Moment fromNow>{video.snippet.publishedAt}</Moment></div>
+                            <div className="time">
+                                {fromLastViewed && <Eye size={16} />}
+                                <Moment fromNow>{fromLastViewed ? fromLastViewed : video.snippet.publishedAt}</Moment>
+                            </div>
                             <div className="like">
                                 <ButtonLike
                                     video={video}

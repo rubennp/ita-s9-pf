@@ -48,6 +48,13 @@ export const Item = styled(ListGroup.Item)`
         }     
     }}
 
+    .time {
+        display: flex;
+        align-items: center;
+
+        svg { margin-right: .25em;}
+    }
+
     img:hover { 
         cursor: pointer;
         transition: opacity .5s;

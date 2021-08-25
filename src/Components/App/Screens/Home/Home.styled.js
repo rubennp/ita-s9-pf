@@ -16,6 +16,11 @@ export const Container = styled.section`
 
 export const RecommendedOrSearched = styled.section`
     grid-area: recommendedOrSearched;
+    & > div {
+        display: flex;
+        height: 28vh;
+        align-items: center;
+    }
 `;
 
 export const SavedList = styled.div`

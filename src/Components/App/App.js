@@ -81,6 +81,10 @@ const App = () => {
     setVideoList(recommendedVideos);
   };
 
+  const handleResetViewed = () => {
+    setLastViewedVideos(null);
+  };
+
   // Effects
   useEffect(function onLastValidSearch() {
     if ((videoSearch && search !== '') && lastSearch) {
@@ -119,7 +123,6 @@ const App = () => {
     history.push('/home');
   }, [videoSearch]); 
 
-  console.log(lastViewedVideos);
   return (
     <Main fluid>
       <Menu />
@@ -131,6 +134,7 @@ const App = () => {
       <Screen>
         <Switch>
           <Redirect exact from="/" to="/home"/>
+          {!videoList && <Redirect to="/home" />}
           <Route path="/home">
             {videoList &&
               <Home 
@@ -156,7 +160,15 @@ const App = () => {
               handleVideoLiked={handleVideoLiked}
             />
           </Route>
-          <Route path="/history" component={History}/>
+          <Route path="/history">
+            <History 
+              list={lastViewedVideos}
+              handleResetViewed={handleResetViewed}
+              handleVideoSelect={handleVideoSelect}
+              videoLiked={videoLiked}
+              handleVideoLiked={handleVideoLiked}
+            />
+          </Route>
           <Route path="/liked">
             <Liked 
               list={videoLiked} 
