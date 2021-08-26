@@ -105,6 +105,12 @@ const App = () => {
 
   // returns random lists from videos on searches
   const makeListFromYourSearches = () => {
+    const randomIdx = max => Math.floor(Math.random() * max);
+    const repeat = (func, times) => {
+      func();
+      times && --times && repeat(func, times);
+    };
+
     const videosFromSearch = (search, howMany) => {
       const randomIdx = max => Math.floor(Math.random() * max);
       const repeat = (func, times) => {
@@ -112,12 +118,12 @@ const App = () => {
         times && --times && repeat(func, times);
       };
 
-      if (search.videos.length > 2) {
+      if (search.videos.length > 2 || (search.videos.length === 2 && howMany === 1)) {
         let videosToExtractFrom = [...search.videos];
         let randomVideos = [];
 
         repeat(() => {
-          randomVideos = [...videosToExtractFrom.splice(randomIdx(videosToExtractFrom.length), 1)];
+          randomVideos = [...randomVideos, ...videosToExtractFrom.splice(randomIdx(videosToExtractFrom.length), 1)];
         }, howMany);
         
         return randomVideos;
@@ -126,11 +132,23 @@ const App = () => {
       }
     };
 
-    if (searches) return searches.map(search => {
-      return videosFromSearch(search, searches.length > 5 ? 1 : 2);
-    }).flat();
+    if (searches) {
+      let searchesToExtractFrom = [...searches];
+      let randomSearches = [];
+      let _searches = [];
 
-    else return null;
+      if (searches.length < 10) _searches = [...searches];
+      else {
+        repeat(() => {
+          randomSearches = [...randomSearches, ...searchesToExtractFrom.splice(randomIdx(searchesToExtractFrom.length), 1)];
+        }, 10);
+        _searches = [...randomSearches];
+      }
+
+      return _searches.map(search => {
+        return videosFromSearch(search, _searches.length > 5 ? 1 : 2);
+      }).flat();
+    } else return null;
   };
 
   // Effects
@@ -189,7 +207,7 @@ const App = () => {
       <Screen>
         <Switch>
           <Redirect exact from="/" to="/home"/>
-          {!videoList && <Redirect to="/home" />}
+          {!videoList && <Redirect to="/home" />} {/*needed onClick exit saved search list*/}
           <Route path="/home">
             {videoList &&
               <Home 

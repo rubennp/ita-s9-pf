@@ -36,12 +36,6 @@ const Home = ({
 }) => {
     const [listFromSaved, setListFromSaved] = useState(null);
 
-    useEffect(() => {
-        setListFromSaved(null);
-        handleExitFromSavedList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     useEffect(function onComingFromSaved() {
         setListFromSaved(fromSavedSearch);
     }, [fromSavedSearch]);
