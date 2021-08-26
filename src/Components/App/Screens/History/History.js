@@ -65,7 +65,7 @@ const History = ({
             </LastViewed>
             <FromSearches list={videosFromYourSearches}>
                 <div>
-                    <h3>From searches</h3>
+                    <h3>Random videos from your searches</h3>
                     {videosFromYourSearches &&
                         <OverlayTrigger 
                             key="videosFromYourSearches-randomButton"
