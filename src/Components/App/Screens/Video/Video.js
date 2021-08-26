@@ -1,10 +1,13 @@
-import useGetVideoList from '../../../../hooks/useGetVideoList.js';
+import useGetVideoList from '../../../../Hooks/useGetVideoList.js';
 
 import { Container, Related } from './Video.styled.js';
 
 import VideoDetail from './VideoDetail';
 import VideoList from '../../VideoList';
 
+/*
+ * Video(): Component = Video screen
+ */
 const Video = ({
     selected, 
     handleVideoSelect, 

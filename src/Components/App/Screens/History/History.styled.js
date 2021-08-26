@@ -48,6 +48,7 @@ export const LastViewed = styled.section`
     & > div {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         button {
             justify-self: flex-end;
@@ -57,16 +58,18 @@ export const LastViewed = styled.section`
             border-radius: 100%;
             height: 1.5em;
             width: 1.5em;
+            margin: .3em;
     
             svg {
                 margin-left: .1em;
                 overflow: visible; 
             }
         }
+
+        h3 { margin-bottom: 0; }
     }
 `;
 
-export const FromSearches = styled.section`
-    grid-area: fromSearches;
-    margin-bottom: 2em;
+export const FromSearches = styled(LastViewed)`
+    grid-area: fromSearches !important;
 `;

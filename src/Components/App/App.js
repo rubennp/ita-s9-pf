@@ -18,7 +18,7 @@ import Searches from './Screens/Searches';
 import Video from './Screens/Video';
 
 // Hooks
-import useGetVideoList from '../../hooks';
+import useGetVideoList from '../../Hooks';
 
 /*
  * App(): main Component
@@ -37,20 +37,27 @@ const App = () => {
   const [lastViewedVideos, setLastViewedVideos] = useState(null);
   const [videosFromYourSearches, setVideosFromYourSearches] = useState(null);
 
+  // Fetches
   const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
   const recommendedVideos = useGetVideoList({action: 'RECOMMENDED'});
 
-  // Handles
+  /*
+   * Handles
+   */
+
+  // when you like or unlike a video...
   const handleVideoLiked = (video, like) => {
     if (like) setVideoLiked(prev => [...prev, video]);
     else setVideoLiked(prev => prev.filter(v => v.id !== video.id));
   };
 
+  // when you make a search...
   const handleSubmit = search => {
     setSearch(search);
     if (search !== '') setLastSearch(search);
   };
 
+  // on select a video to view...
   const handleVideoSelect = video => { 
     setVideoSelected(video);
     setLastViewedVideos(prev => {
@@ -59,6 +66,7 @@ const App = () => {
     });
   };
 
+  // when you delete a saved search list...
   const handleDelSearch = (idx) => {
     setSearches(prevSearches => {
       const newSearches = prevSearches.filter((el, pos) => idx !== pos);
@@ -67,28 +75,38 @@ const App = () => {
     });
   };
 
+  // when you click repeat search on saved searches section on Home screen...
   const handleRepeatSearch = (idx) => {
     handleSubmit(searches[idx].search);
   };
 
+  // when you click load a saved search list on saved searches section on Home screen...
   const handleLoadSearch = (idx) => {
     setFromSavedSearch(searches[idx].search);
     setVideoList(searches[idx].videos);
   };
 
+  // when you exits from saved search list on Home screen...
   const handleExitFromSavedList = () => {
     setFromSavedSearch(null);
     setSearch('');
     setVideoList(recommendedVideos);
   };
 
+  // when you reset last viewed videos on History screen
   const handleResetViewed = () => {
     setLastViewedVideos(null);
   };
 
+  // when you click random new list from saved searches on History screen
+  const handleRandomListFromYourSearches = () => {
+    setVideosFromYourSearches(makeListFromYourSearches());
+  };
+
+  // returns random lists from videos on searches
   const makeListFromYourSearches = () => {
     const videosFromSearch = (search, howMany) => {
-      const randomNum = max => Math.floor(Math.random() * max);
+      const randomIdx = max => Math.floor(Math.random() * max);
       const repeat = (func, times) => {
         func();
         times && --times && repeat(func, times);
@@ -99,7 +117,7 @@ const App = () => {
         let randomVideos = [];
 
         repeat(() => {
-          randomVideos = [...videosToExtractFrom.splice(randomNum(videosToExtractFrom.length), 1)];
+          randomVideos = [...videosToExtractFrom.splice(randomIdx(videosToExtractFrom.length), 1)];
         }, howMany);
         
         return randomVideos;
@@ -109,7 +127,7 @@ const App = () => {
     };
 
     if (searches) return searches.map(search => {
-      return videosFromSearch(search, (searches.lenght > 5 ? 1 : 2));
+      return videosFromSearch(search, searches.length > 5 ? 1 : 2);
     }).flat();
 
     else return null;
@@ -204,6 +222,8 @@ const App = () => {
               handleVideoSelect={handleVideoSelect}
               videoLiked={videoLiked}
               handleVideoLiked={handleVideoLiked}
+              videosFromYourSearches={videosFromYourSearches}
+              handleRandomListFromYourSearches={handleRandomListFromYourSearches}
             />
           </Route>
           <Route path="/liked">
