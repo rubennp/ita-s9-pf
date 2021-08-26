@@ -52,6 +52,8 @@ export const Item = styled(ListGroup.Item)`
         display: flex;
         align-items: center;
 
+        & * { color: rgba(0, 0, 0, .2); }
+
         svg { margin-right: .25em;}
     }
 

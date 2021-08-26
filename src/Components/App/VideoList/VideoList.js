@@ -10,7 +10,8 @@ import { List } from './VideoList.styled';
 const VideoList = ({
     fromLastViewed,
     page, 
-    favorites, 
+    favorites,
+    fromSearches,
     list, 
     handleVideoSelect, 
     videoLiked, 
@@ -22,9 +23,26 @@ const VideoList = ({
                 <small>{"You don't have any liked video, yet!"}</small>
             }
             {list && list.map((video, idx) => {
-                return !fromLastViewed ? 
-                (
-                    <VideoItem
+                if (fromLastViewed) {
+                    return <VideoItem 
+                        fromLastViewed={video.viewedAt}
+                        key={idx}
+                        video={video.video}
+                        handleVideoSelect={handleVideoSelect}
+                        videoLiked={videoLiked}
+                        handleVideoLiked={handleVideoLiked}
+                    />;
+                } else if (fromSearches) {
+                    return <VideoItem 
+                        fromSearches={video.search}
+                        key={idx}
+                        video={video.video}
+                        handleVideoSelect={handleVideoSelect}
+                        videoLiked={videoLiked}
+                        handleVideoLiked={handleVideoLiked}
+                    />;
+                } else {
+                    return <VideoItem
                         page={page}
                         favorites={favorites}
                         key={idx} 
@@ -32,18 +50,30 @@ const VideoList = ({
                         handleVideoSelect={handleVideoSelect} 
                         videoLiked={page ? list : videoLiked} 
                         handleVideoLiked={handleVideoLiked}
-                    />
-                )
-                :
-                    <VideoItem 
-                        fromLastViewed={video.viewedAt}
-                        key={idx}
-                        video={video.video}
-                        handleVideoSelect={handleVideoSelect}
-                        videoLiked={videoLiked}
-                        handleVideoLiked={handleVideoLiked}
-                    />
-                ;
+                    />;
+                }
+                // return !fromLastViewed ? 
+                // (
+                //     <VideoItem
+                //         page={page}
+                //         favorites={favorites}
+                //         key={idx} 
+                //         video={video} 
+                //         handleVideoSelect={handleVideoSelect} 
+                //         videoLiked={page ? list : videoLiked} 
+                //         handleVideoLiked={handleVideoLiked}
+                //     />
+                // )
+                // :
+                //     <VideoItem 
+                //         fromLastViewed={video.viewedAt}
+                //         key={idx}
+                //         video={video.video}
+                //         handleVideoSelect={handleVideoSelect}
+                //         videoLiked={videoLiked}
+                //         handleVideoLiked={handleVideoLiked}
+                //     />
+                // ;
             })}
         </List>
     );

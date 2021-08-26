@@ -93,12 +93,12 @@ const App = () => {
     setVideoList(recommendedVideos);
   };
 
-  // when you reset last viewed videos on History screen
+  // when you reset last viewed videos on History screen...
   const handleResetViewed = () => {
     setLastViewedVideos(null);
   };
 
-  // when you click random new list from saved searches on History screen
+  // when you click random new list from saved searches on History screen...
   const handleRandomListFromYourSearches = () => {
     setVideosFromYourSearches(makeListFromYourSearches());
   };
@@ -106,30 +106,33 @@ const App = () => {
   // returns random lists from videos on searches
   const makeListFromYourSearches = () => {
     const randomIdx = max => Math.floor(Math.random() * max);
+    
     const repeat = (func, times) => {
       func();
       times && --times && repeat(func, times);
     };
 
-    const videosFromSearch = (search, howMany) => {
-      const randomIdx = max => Math.floor(Math.random() * max);
-      const repeat = (func, times) => {
-        func();
-        times && --times && repeat(func, times);
-      };
+    const shuffle = array => {
+      let current = array.length, random;
+      repeat(() => {
+        random = randomIdx(current);
+        current--;
+        [array[current], array[random]] = [array[random], array[current]];
+      }, array.length);
+      return array;
+    };
 
-      if (search.videos.length > 2 || (search.videos.length === 2 && howMany === 1)) {
-        let videosToExtractFrom = [...search.videos];
-        let randomVideos = [];
+    const videosFromSearch = (search, howMany) => { 
+      let videosToExtractFrom = [...search.videos];
+      let randomVideos = [];
 
-        repeat(() => {
-          randomVideos = [...randomVideos, ...videosToExtractFrom.splice(randomIdx(videosToExtractFrom.length), 1)];
-        }, howMany);
-        
-        return randomVideos;
-      } else {
-        return search.videos;
-      }
+      if (howMany === 2 && search.videos.length === 1) howMany = 1;
+
+      repeat(() => {
+        randomVideos = [...randomVideos, { search: search.search, video: {...videosToExtractFrom.splice(randomIdx(videosToExtractFrom.length), 1).shift()}}];
+      }, howMany);
+      
+      return randomVideos;
     };
 
     if (searches) {
@@ -145,9 +148,9 @@ const App = () => {
         _searches = [...randomSearches];
       }
 
-      return _searches.map(search => {
+      return shuffle(_searches.map(search => {
         return videosFromSearch(search, _searches.length > 5 ? 1 : 2);
-      }).flat();
+      }).flat());
     } else return null;
   };
 
@@ -192,7 +195,7 @@ const App = () => {
   useEffect(function onSearch() {
     history.push('/home');
   }, [videoSearch]); 
-
+  
   return (
     <Main fluid>
       <Menu />

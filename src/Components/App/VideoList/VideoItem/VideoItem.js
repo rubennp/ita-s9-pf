@@ -14,7 +14,8 @@ import { Eye } from 'react-bootstrap-icons';
 const VideoItem = ({
     fromLastViewed,
     page, 
-    favorites, 
+    favorites,
+    fromSearches,
     video, 
     handleVideoSelect, 
     videoLiked, 
@@ -41,7 +42,8 @@ const VideoItem = ({
                         <Info>
                             <div className="time">
                                 {fromLastViewed && <Eye size={16} />}
-                                <Moment fromNow>{fromLastViewed ? fromLastViewed : video.snippet.publishedAt}</Moment>
+                                {fromSearches && <h3>from "{fromSearches}"</h3>}
+                                {!fromSearches && <Moment fromNow>{fromLastViewed ? fromLastViewed : video.snippet.publishedAt}</Moment>}
                             </div>
                             <div className="like">
                                 <ButtonLike

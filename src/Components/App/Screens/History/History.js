@@ -85,7 +85,8 @@ const History = ({
                 </div>
                 {videosFromYourSearches ?
                     <div>
-                        <VideoList  
+                        <VideoList
+                            fromSearches
                             list={videosFromYourSearches} 
                             handleVideoSelect={handleVideoSelect} 
                             videoLiked={videoLiked} 
