@@ -193,9 +193,6 @@ const App = () => {
     history.push('/home');
   }, [videoSearch]); 
 
-  if (videosFromYourSearches) 
-    console.log(videosFromYourSearches);
-
   return (
     <Main fluid>
       <Menu />
