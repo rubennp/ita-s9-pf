@@ -47,12 +47,12 @@ const App = () => {
   /**** EFFECTS ****/
   useEffect(function init() {
     const onLocalStorage = JSON.parse(localStorage.getItem('reactube-data'));
+    
     if (onLocalStorage) {
       setSearches(onLocalStorage.searches);
       setVideoLiked(onLocalStorage.videoLiked);
       setVideosFromYourSearches(onLocalStorage.videosFromYourSearches);
       setLastViewedVideos(onLocalStorage.lastViewedVideos);
-      console.log(onLocalStorage);
     } else {
       saveDataOnLocalStorage();
     }
@@ -98,6 +98,7 @@ const App = () => {
   }, [videoSelected]);
 
   /**** HANDLES ****/
+  
   // on like or unlike a video...
   const handleVideoLiked = (video, like) => {
     if (like) setVideoLiked(prev => [...prev, video]);

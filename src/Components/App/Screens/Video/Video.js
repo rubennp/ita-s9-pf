@@ -14,8 +14,8 @@ const Video = ({
     videoLiked, 
     handleVideoLiked
 }) => {
-    const related = useGetVideoList({action: 'RELATED', video: selected}, [selected]);
-
+    const related = useGetVideoList({action: 'RELATED', video: selected.id}, [selected]);
+    
     return (
         <Container>
             <VideoDetail 

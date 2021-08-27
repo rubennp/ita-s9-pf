@@ -23,57 +23,37 @@ const VideoList = ({
                 <small>{"You don't have any liked video, yet!"}</small>
             }
             {list && list.map((video, idx) => {
-                if (fromLastViewed) {
-                    return <VideoItem 
-                        fromLastViewed={video.viewedAt}
-                        key={idx}
-                        video={video.video}
-                        handleVideoSelect={handleVideoSelect}
-                        videoLiked={videoLiked}
-                        handleVideoLiked={handleVideoLiked}
-                    />;
-                } else if (fromSearches) {
-                    return <VideoItem 
-                        fromSearches={video.search}
-                        key={idx}
-                        video={video.video}
-                        handleVideoSelect={handleVideoSelect}
-                        videoLiked={videoLiked}
-                        handleVideoLiked={handleVideoLiked}
-                    />;
-                } else {
-                    return <VideoItem
-                        page={page}
-                        favorites={favorites}
-                        key={idx} 
-                        video={video} 
-                        handleVideoSelect={handleVideoSelect} 
-                        videoLiked={page ? list : videoLiked} 
-                        handleVideoLiked={handleVideoLiked}
-                    />;
+                if (video.snippet) {
+                    if (fromLastViewed) {
+                        return <VideoItem 
+                            fromLastViewed={video.viewedAt}
+                            key={idx}
+                            video={video.video}
+                            handleVideoSelect={handleVideoSelect}
+                            videoLiked={videoLiked}
+                            handleVideoLiked={handleVideoLiked}
+                        />;
+                    } else if (fromSearches) {
+                        return <VideoItem 
+                            fromSearches={video.search}
+                            key={idx}
+                            video={video.video}
+                            handleVideoSelect={handleVideoSelect}
+                            videoLiked={videoLiked}
+                            handleVideoLiked={handleVideoLiked}
+                        />;
+                    } else {
+                        return <VideoItem
+                            page={page}
+                            favorites={favorites}
+                            key={idx} 
+                            video={video} 
+                            handleVideoSelect={handleVideoSelect} 
+                            videoLiked={page ? list : videoLiked} 
+                            handleVideoLiked={handleVideoLiked}
+                        />;
+                    }
                 }
-                // return !fromLastViewed ? 
-                // (
-                //     <VideoItem
-                //         page={page}
-                //         favorites={favorites}
-                //         key={idx} 
-                //         video={video} 
-                //         handleVideoSelect={handleVideoSelect} 
-                //         videoLiked={page ? list : videoLiked} 
-                //         handleVideoLiked={handleVideoLiked}
-                //     />
-                // )
-                // :
-                //     <VideoItem 
-                //         fromLastViewed={video.viewedAt}
-                //         key={idx}
-                //         video={video.video}
-                //         handleVideoSelect={handleVideoSelect}
-                //         videoLiked={videoLiked}
-                //         handleVideoLiked={handleVideoLiked}
-                //     />
-                // ;
             })}
         </List>
     );

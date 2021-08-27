@@ -26,7 +26,7 @@ const VideoItem = ({
             <Card>
                 <Card.Img onClick={()=> {
                     handleVideoSelect(video);
-                }}variant="top" src={video.snippet.thumbnails.high.url} onError={e => {e.target.src = `${onErrorVidImg}`}}/>
+                }} variant="top" src={video.snippet.thumbnails.high.url} onError={e => {e.target.src = `${onErrorVidImg}`}}/>
                 {favorites ?
                     <Overlay>
                         <ButtonLike

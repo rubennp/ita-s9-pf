@@ -1,61 +1,64 @@
 import { useEffect, useState } from 'react';
 
-// import { getYTRes } from '../apis/youtube';
+import { getYTRes } from '../apis/youtube';
 import * as myapi from '../apis/myapi';
-
-// const saveOnLocalStorage = data => {
-//     const onLocalStorage = JSON.parse(localStorage.getItem('reactube-res'));
-
-//     if (!onLocalStorage) localStorage.setItem('reactube-res', JSON.stringify([data]));
-//     else localStorage.setItem('reactube-res', JSON.stringify([...onLocalStorage, data]));
-// };
 
 const useGetVideoList = (from) => {
     const [videoList, setVideoList] = useState(null);
+    const [recommended, setRecommended] = useState(null);
 
     const getVideos = async (from) => {
         switch(from.action) {
-            case 'SEARCH':
-                    // try {
-                    //     const ytRes = await getYTRes('SEARCH', from.search);
-                    //     if (!ytRes) throw new Error("Failed YouTube's Connection");
-                    //     setVideoList(ytRes);
-                    // } catch(err) {
-                    //     console.error(err.message);
-                    // }
-    // !!
-    // TODO: remember to transform to a list of (id, snippet) like does myapi
-    // !!
-                    // try {
-                    //     const ytRes = from.search !== '' ? 
-                    //         await getYTRes('SEARCH', from.search) :
-                    //         await getYTRes('POPULAR');
-                    //         if (!ytRes) throw new Error("Failed YouTube's Connection");
-                    //         setVideoList(ytRes);
-                    // } catch(err) {
-                    //     console.error(err.message);
-                    // }
-                if (from.search !== '') {
-                    setVideoList(myapi.filteredItems(from.search));
-                } else {
-                    setVideoList(myapi.recommendedRes.items.map(item => {
-                            return { id: item.id, snippet: item.snippet};
-                        })
-                    );
+            case 'SEARCH':       
+                try {
+                    const what = from.search === '' ? 'POPULAR' : 'SEARCH';
+                    const ytRes = !recommended || what === 'SEARCH' ? await getYTRes(what, from.search) : recommended;
+                    if (!ytRes) throw new Error("Failed YouTube's Connection");
+
+                    setVideoList(ytRes.items.map(item => {
+                        return what === 'SEARCH' ?
+                        { id: item.id.videoId, snippet: {...item.snippet} }
+                        :
+                        { id: item.id, snippet: item.snippet };
+                    }));
+
+                    if (!recommended && what === 'POPULAR')
+                        setRecommended(videoList);
+                } catch(err) {
+                    console.error(err.message);
                 }
+
+                // if (from.search !== '') {
+                //     setVideoList(myapi.filteredItems(from.search));
+                // } else {
+                //     setVideoList(myapi.recommendedRes.items.map(item => {
+                //             return { id: item.id, snippet: item.snippet};
+                //         })
+                //     );
+                // }
                 break;
             case 'RELATED':
-                setVideoList(myapi.relatedRes.items.map(item => {
+                try {
+                    const ytRes = await getYTRes('RELATED', from.video);
+                    if (!ytRes) throw new Error("Failed YouTube's Connection");
+                    setVideoList(ytRes.items.map(item => {
                         return { id: item.id.videoId, snippet: item.snippet };
-                    })
-                );
+                    }));
+                } catch(err) {
+                    console.error(err.message);
+                }
+                // setVideoList(myapi.relatedRes.items.map(item => {
+                //         return { id: item.id.videoId, snippet: item.snippet };
+                //     })
+                // );
                 break;
             case 'RECOMMENDED':
-                setVideoList(myapi.recommendedRes.items.map(item => {
-                        return { id: item.id, snippet: item.snippet};
-                    })
-                );
-                break;
+                return recommended;
+                // setVideoList(myapi.recommendedRes.items.map(item => {
+                //         return { id: item.id, snippet: item.snippet};
+                //     })
+                // );
+                // break;
             default:
                 break;
         }
@@ -65,10 +68,6 @@ const useGetVideoList = (from) => {
         getVideos(from);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [from.action, from.search]);
-    
-    // useEffect(() => {
-    //     if (videoList) saveOnLocalStorage(videoList);
-    // }, [videoList]);
 
     return videoList;
 };

@@ -706,61 +706,6 @@ export const relatedRes = {
         }
     ]
 };
-
-/* RELACIONADOS: (https://developers.google.com/youtube/v3/guides/implementation/videos)
-    const res = await youtube.get('/search/', {
-        params: {
-          type: "video",
-          relatedToVideoId: "(idvideo)"
-        }
-    });
-*/
-
-/* POPULARES: (https://developers.google.com/youtube/v3/guides/implementation/videos)
-    const res = await youtube.get('/search/', {
-        params: {
-          chart: "mostPopular",
-          (regionCode: ["es"]),
-          (videoCategory: [27])
-        }
-    });
-*/
-
-/* VIDEO CATEGORIES: (https://gist.github.com/dgp/1b24bf2961521bd75d6c)
-2 - Autos & Vehicles
-1 -  Film & Animation
-10 - Music
-15 - Pets & Animals
-17 - Sports
-18 - Short Movies
-19 - Travel & Events
-20 - Gaming
-21 - Videoblogging
-22 - People & Blogs
-23 - Comedy
-24 - Entertainment
-25 - News & Politics
-26 - Howto & Style
-27 - Education
-28 - Science & Technology
-29 - Nonprofits & Activism
-30 - Movies
-31 - Anime/Animation
-32 - Action/Adventure
-33 - Classics
-34 - Comedy
-35 - Documentary
-36 - Drama
-37 - Family
-38 - Foreign
-39 - Horror
-40 - Sci-Fi/Fantasy
-41 - Thriller
-42 - Shorts
-43 - Shows
-44 - Trailers 
-*/
-
 /* const responseSecondPage = {
     "kind": "youtube#searchListResponse",
     "etag": "9USePcA-f7pzXFiI2NaCoMdjEd8",
@@ -944,6 +889,294 @@ export const relatedRes = {
       }
     ]
   };  */
+  
+/* const responseThirdPage = 
+  {
+    "kind": "youtube#searchListResponse",
+    "etag": "H3-cJGy-dyTzf0sVlIv-Klu7wHI",
+    "nextPageToken": "CAUQAA",
+    "regionCode": "ES",
+    "pageInfo": {
+      "totalResults": 128,
+      "resultsPerPage": 5
+    },
+    "items": [
+      {
+        "kind": "youtube#searchResult",
+        "etag": "J217Hhw_qXUsgKJ12FYUaZz-O_g",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "M3DO5Zfk4NI"
+        },
+        "snippet": {
+          "publishedAt": "2021-06-23T23:00:13Z",
+          "channelId": "UCP15FVAA2UL-QOcGhy7-ezA",
+          "title": "La ruta para ser desarrollador web profesional en 2021 🤩",
+          "description": "La web es una de las áreas de la tecnología con mayor mercado laboral porque no está ligada a ningún sistema operativo, dispositivo o empresa, sino que es abierta y universal. Sin embargo, esta ventaja es compleja ya que existen muchos caminos posibles para ser un desarrollador web profesional. Incluso dentro del mismo rol (como backend y frontend por ejemplo) existen muchas tecnologías que puedes escoger. Esto hace que cualquier persona que empiece en el mundo de la web quede muy confundida sin saber qué camino tomar.\nÁlvaro Felipe te explica cual es el mejor camino para entrar a este mundo y te dejará completamente listo para iniciar tu carrera como desarrollador web profesional.\n¡No te lo pierdas! 😉\n\nMira el curso que llegó esta semana a EDteam: 👇🎉\n👨\u200d💻 Curso: Auditoría en seguridad para aplicaciones Android https://ed.team/cursos/auditoria-android\n\n🏆 Te damos el poder para alcanzar tus sueños a través de la educación.\n🌎 100% de raza latina | 100% Remotos (5 años)\n💪 #NoTeDetengas 🦄 #EDteamFunciona\n\nWeb y comunidad EDteam 💻 https://ed.team/comunidad\nSé un estudiante premium en EDteam⭐ https://ed.team/premium\n\n🔰 LinkedIn: https://ed.team/linkedin\n🔰 Instagram: https://ed.team/instagram\n🔰 TikTok: https://www.tiktok.com/@edteam",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/M3DO5Zfk4NI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/M3DO5Zfk4NI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/M3DO5Zfk4NI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/M3DO5Zfk4NI/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/M3DO5Zfk4NI/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "EDteam",
+          "liveBroadcastContent": "none",
+          "publishTime": "2021-06-23T23:00:13Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "FZOUl7XYhbZFm5zn4c9mGjFG2bQ",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "zIY87vU33aA"
+        },
+        "snippet": {
+          "publishedAt": "2019-06-24T20:22:19Z",
+          "channelId": "UCX9NJ471o7Wie1DQe94RVIg",
+          "title": "Reactjs, Curso Práctico para Principiantes (React 16)",
+          "description": "EXPO, SDK De React para desarrollo de Apps\nLink ➞ https://bit.ly/3jdjnST\n\nAprende a crear aplicaciones web Frontend usando una de las bibliotecas de Javascript más populares para la creación de Interfaces: Reactjs. En este curso de React 16, estaremos aprendiendo lo siguiente:\n\n🛍 Descuentos:\nNordVPN ➞ 68% de descuento en plan de 2 años  ➞ Código: fazt\nHostinger ➞ 7% de descuento en cualquier compra ➞Código: FAZT\nDigital Ocean ➞ Obtén 100$ gratis ➞ https://m.do.co/c/8ef261d77de5\n\n👨\u200d💻 ¿Qué servicios utilizo? \nKite ➞ https://bit.ly/3dPzXHe\nNordVPN ➞ https://bit.ly/2Te7p0J\nHostinger ➞ https://www.hostg.xyz/SH4YB\nCloudinary ➞ https://bit.ly/3ohNlJ7\nSiteGround ➞ https://bit.ly/31u9ZEk\nNamecheap ➞ https://bit.ly/3kne9W8\n\n🖥️ Cursos:\nCurso de Python Para Principiantes ➞ https://youtu.be/chPhlsHoEPo\nCurso de Raspberry PI ➞ https://youtu.be/ra6kNSIB1uA\nSetup Visual Studio Code ➞ https://youtu.be/zbycB-Yetb0\nCurso del Stack MERN ➞ https://youtu.be/_RZ-T6TxP7w\nCurso de Typescript ➞ https://youtu.be/Xxqh0RoWxNc\n\n🌐 Redes:\nFazt Web ➞ https://www.faztweb.com/\nFacebook ➞ https://facebook.com/fazttech\nInstagram ➞ https://www.instagram.com/fazttech\nTwitter ➞ https://twitter.com/fazttech\nTelegram ➞ https://t.me/fazttech\nTwitch ➞ https://www.twitch.tv/fazttech\nSlack ➞ https://bit.ly/3dPqCPT\nDiscord ➞ https://discord.gg/mFUY4sT\nBlog ➞  http://blog.faztweb.com\n\n📩 Contacto:\n➞ fazt@faztweb.com\n\n#react #reactjs #javascript",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/zIY87vU33aA/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "Fazt",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-06-24T20:22:19Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "blW3VFs2cnnPTwg-O59Sh0g04pE",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "A-iKX8Shge4"
+        },
+        "snippet": {
+          "publishedAt": "2020-03-10T01:39:12Z",
+          "channelId": "UCP15FVAA2UL-QOcGhy7-ezA",
+          "title": "Framework vs Librería",
+          "description": "Cuando nos adentramos más en el mundo del desarrollo de software queremos construir aplicaciones mucho más rápido y las librerías y frameworks nos ayudan, pero ¿cuando deberías usar una librería y cuando un framework? En este video te enseñamos para que sirven, cuales son sus ventajas y en que casos debes usarlos.\n\nHemos preparado un artículo con el resumen del video, léelo aquí 📑 https://ed.team/blog/framework-vs-libreria\n\n🚀 Ayudamos a las personas a desarrollarse y alcanzar sus sueños con cursos de programación, diseño y emprendimiento online y en español.\n#NuncaTeDetengas\n\n¡🎁 Ahora puedes ser Premium gratis!\nDescubre como aquí 👉 https://ed.team/blog/tambien-soy-edteam\n\nWeb y comunidad EDteam\n💻 https://ed.team\n\nSé un estudiante premium en EDteam\n⭐ https://ed.team/premium\n\n💼 LinkedIn: https://ed.team/linkedin\n📷 Instagram: https://ed.team/instagram\n🕊 Twitter: https://ed.team/twitter\n🦄 Facebook:https://ed.team/facebook",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/A-iKX8Shge4/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/A-iKX8Shge4/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/A-iKX8Shge4/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/A-iKX8Shge4/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/A-iKX8Shge4/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "EDteam",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-03-10T01:39:12Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "JMT8HjDfU79RFWZK0W3N9017c-A",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "jGehuhFhtnE"
+        },
+        "snippet": {
+          "publishedAt": "2019-08-25T20:47:54Z",
+          "channelId": "UCP15FVAA2UL-QOcGhy7-ezA",
+          "title": "¿Qué es Git y cómo funciona?",
+          "description": "¿Te han dicho que si no sabes Git no podrás encontrar trabajo aunque ya sepas programar? ¡Es verdad! Git es un sistema de control de versiones de software que permite trabajar en equipo llevando un historial de todos los cambios en el proyecto.\n\nAprende Git en nuestro curso https://ed.team/cursos/git\n\nEn este video aprenderás:\n✅ ¿Qué es un Sistema de Control de Versiones (VCS)?\n✅ ¿Qué es Git y cuales son sus características?\n✅ ¿Que significan los términos repositorio, commit, clon, fork o ramas?\n✅ ¿Cuál es el flujo de trabajo para usar Git en un proyecto?\n✅ Herramientas gráficas para usar Git\n✅ ¿Qué son Github, Bitbucket y Gitlab?\n✅ ¿Qué editores e IDEs integran Git?\n\n🔥 Aprende programación, diseño y emprendimiento con la mejor metodología en español. Un futuro de oportunidades laborales y de emprendimiento te está esperando.\n\nWeb y comunidad EDteam\n✅ https://ed.team\n\nSé un estudiante premium en EDteam\n✅ https://ed.team/premium\n\nInstagram:\n✅ https://ed.team/instagram\n\nTwitter\n✅ https://ed.team/twitter",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/jGehuhFhtnE/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/jGehuhFhtnE/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/jGehuhFhtnE/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/jGehuhFhtnE/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/jGehuhFhtnE/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "EDteam",
+          "liveBroadcastContent": "none",
+          "publishTime": "2019-08-25T20:47:54Z"
+        }
+      },
+      {
+        "kind": "youtube#searchResult",
+        "etag": "fCxmXsLssqE77oD5-rcJFARIaFs",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "bvxm389cYVI"
+        },
+        "snippet": {
+          "publishedAt": "2020-03-07T13:48:02Z",
+          "channelId": "UCe9_3wN0e_b0jRETgpdgq2A",
+          "title": "¿Qué es ReactJS? ⚛️ ¿Cómo funciona? Explicación animada",
+          "description": "Nuestra querida LauriMedusa te va a explicar que es React.\nPor medio de unas pequeñas animaciones, te explicará que es el DOM, los componentes, los props o propiedades, JSX e hidratación.\n\n\nSiguenos en redes sociales:\nFacebook: https://www.facebook.com/debakatas\nInstagram: instagram.com/bakatascom/\n\nEn la web:\ndebakatas.com\nhey@debakatas.com\n\n\n\n\n\n\n\n\n\n\nAnimacion realizada por: Laurita Cubillos Rico https://www.youtube.com/channel/UC6QLFu57RGOWHQ7A5y8PCMw",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/bvxm389cYVI/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/bvxm389cYVI/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/bvxm389cYVI/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            },
+            "standard": {
+              "url": "https://i.ytimg.com/vi/bvxm389cYVI/sddefault.jpg",
+              "width": 640,
+              "height": 480
+            },
+            "maxres": {
+              "url": "https://i.ytimg.com/vi/bvxm389cYVI/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+            }
+          },
+          "channelTitle": "DeBakatas",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-03-07T13:48:02Z"
+        }
+      }
+    ]
+  }; */
+
+/* RELACIONADOS: (https://developers.google.com/youtube/v3/guides/implementation/videos)
+    const res = await youtube.get('/search/', {
+        params: {
+          type: "video",
+          relatedToVideoId: "(idvideo)"
+        }
+    });
+*/
+
+/* POPULARES: (https://developers.google.com/youtube/v3/guides/implementation/videos)
+    const res = await youtube.get('/search/', {
+        params: {
+          chart: "mostPopular",
+          (regionCode: ["es"]),
+          (videoCategory: [27])
+        }
+    });
+*/
+
+/* VIDEO CATEGORIES: (https://gist.github.com/dgp/1b24bf2961521bd75d6c)
+2 - Autos & Vehicles
+1 -  Film & Animation
+10 - Music
+15 - Pets & Animals
+17 - Sports
+18 - Short Movies
+19 - Travel & Events
+20 - Gaming
+21 - Videoblogging
+22 - People & Blogs
+23 - Comedy
+24 - Entertainment
+25 - News & Politics
+26 - Howto & Style
+27 - Education
+28 - Science & Technology
+29 - Nonprofits & Activism
+30 - Movies
+31 - Anime/Animation
+32 - Action/Adventure
+33 - Classics
+34 - Comedy
+35 - Documentary
+36 - Drama
+37 - Family
+38 - Foreign
+39 - Horror
+40 - Sci-Fi/Fantasy
+41 - Thriller
+42 - Shorts
+43 - Shows
+44 - Trailers 
+*/
 
 /* referencia Youtube API search snippet response 
 {

@@ -7,7 +7,7 @@ const youtube = axios.create({
     baseURL: 'https://youtube.googleapis.com/youtube/v3/',
     params: {
       part: 'snippet',
-      maxResults: 5,
+      maxResults: 10,
       key: KEY,
     },
 });
@@ -15,17 +15,33 @@ const youtube = axios.create({
 const params = (func, param = '') => {
   switch(func) {
     case 'SEARCH':
-      return ({ params: { q: param } });
+      return ({ 
+        params: { 
+          q: param 
+        } 
+      });
     case 'RELATED':
-      return ({ params: { type: "video", relatedToVideoId: param } });
+      return ({ 
+        params: { 
+          type: "video", 
+          relatedToVideoId: param 
+        } 
+      });
     case 'POPULAR': 
-      return ({ params: { chart: "mostPopular", region: "es", videoCategory: 28 } });
+      return ({ 
+        params: { 
+          chart: "mostPopular", 
+          region: "es", 
+          videoCategory: 28 
+        } 
+      });
     default:
       return false;
   }
 };
 
 export const getYTRes = async (func, param) => {
+  console.log("YT Connection");
   try {
     const res = await youtube.get('/search/', params(func, param));
     return await res.data;

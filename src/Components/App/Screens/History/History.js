@@ -23,6 +23,8 @@ const History = ({
     videosFromYourSearches,
     handleRandomListFromYourSearches,
 }) => {
+    console.log(list);
+    console.log(videosFromYourSearches);
     return (
         <Container>
             <LastViewed list={list}>
