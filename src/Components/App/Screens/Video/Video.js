@@ -1,4 +1,4 @@
-import useGetVideoList from '../../../../Hooks/useGetVideoList.js';
+import useGetVideoList from '../../../../hooks/useGetVideoList.js';
 
 import { Container, Related } from './Video.styled.js';
 
