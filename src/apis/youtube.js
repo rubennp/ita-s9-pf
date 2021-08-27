@@ -8,6 +8,8 @@ const youtube = axios.create({
     params: {
       part: 'snippet',
       maxResults: 10,
+      videoDefinition: 'standard',
+      videoDimension: '2d',
       key: KEY,
     },
 });

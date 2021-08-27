@@ -11,12 +11,12 @@ export const Detail = styled.section`
     border-radius: 10px;
     background-color: white;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, .5);
-    padding: 2em;
+    padding: 1.5em;
 `;
 
 export const Video = styled.iframe`
-    width: 100%;
-    height: 100%;
+    width: 40vw;
+    height: 38vh;
 `;
 
 export const Info = styled.div`
@@ -27,16 +27,24 @@ export const Info = styled.div`
     text-align: justify;
 
     h2 { 
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         font-size: 1.5em; 
         font-weight: bold;
-        margin-bottom: .75em;
+        margin-bottom: .5em;
     }
 
     p { 
+        overflow-y: auto;
         font-size: 1em;
         font-weight: 500;
         color: #495057;
         margin-bottom: 0;
+        height: 28vh;
+        width: 28vw;
+        margin-bottom: 1em;
     }
 
     button {

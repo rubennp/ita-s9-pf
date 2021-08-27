@@ -98,7 +98,7 @@ const App = () => {
   }, [videoSelected]);
 
   /**** HANDLES ****/
-  
+
   // on like or unlike a video...
   const handleVideoLiked = (video, like) => {
     if (like) setVideoLiked(prev => [...prev, video]);
@@ -177,7 +177,15 @@ const App = () => {
       if (howMany === 2 && search.videos.length === 1) howMany = 1;
 
       (() => {
-        randomVideos = [...randomVideos, { search: search.search, video: {...videosToExtractFrom.splice(utils.randomIdx(videosToExtractFrom.length), 1).shift()}}];
+        randomVideos = [
+          ...randomVideos, 
+          { 
+            search: search.search, 
+            video: {
+              ...videosToExtractFrom.splice(utils.randomIdx(videosToExtractFrom.length), 1).shift()
+            }
+          }
+        ];
       }).times(howMany);
       
       return randomVideos;
@@ -191,7 +199,10 @@ const App = () => {
       if (searches.length < 10) _searches = [...searches];
       else {
         (() => {
-          randomSearches = [...randomSearches, ...searchesToExtractFrom.splice(utils.randomIdx(searchesToExtractFrom.length), 1)];
+          randomSearches = [
+            ...randomSearches, 
+            ...searchesToExtractFrom.splice(utils.randomIdx(searchesToExtractFrom.length), 1)
+          ];
         }).times(10);
         _searches = [...randomSearches];
       }
