@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { getYTRes } from '../apis/youtube';
-import * as myapi from '../apis/myapi';
+// import * as myapi from '../apis/myapi';
 
 const useGetVideoList = (from) => {
     const [videoList, setVideoList] = useState(null);
@@ -15,13 +15,11 @@ const useGetVideoList = (from) => {
                     const ytRes = !recommended || what === 'SEARCH' ? await getYTRes(what, from.search) : recommended;
                     if (!ytRes) throw new Error("Failed YouTube's Connection");
 
-                    setVideoList(ytRes.items.filter(item => {
-                        if (item.snippet) {
-                            return what === 'SEARCH' ?
-                            { id: item.id.videoId, snippet: {...item.snippet} }
-                            :
-                            { id: item.id, snippet: item.snippet };
-                        }
+                    setVideoList(ytRes.items.filter(item => item.snippet).map(item => {
+                        return what === 'SEARCH' ?
+                        { id: item.id.videoId, snippet: {...item.snippet} }
+                        :
+                        { id: item.id, snippet: item.snippet };
                     }));
 
                     if (!recommended && what === 'POPULAR')
@@ -43,8 +41,8 @@ const useGetVideoList = (from) => {
                 try {
                     const ytRes = await getYTRes('RELATED', from.video);
                     if (!ytRes) throw new Error("Failed YouTube's Connection");
-                    setVideoList(ytRes.items.filter(item => {
-                        if (item.snippet) return { id: item.id.videoId, snippet: item.snippet };
+                    setVideoList(ytRes.items.filter(item => item.snippet).map(item => {
+                        return { id: item.id.videoId, snippet: item.snippet };
                     }));
                 } catch(err) {
                     console.error(err.message);

@@ -62,7 +62,7 @@ const Home = ({
                         </OverlayTrigger>
                     </SavedList> 
                 : 
-                    <h3>{search === '' ? "Recommended videos" : `Videos from your search "${search}"`}</h3>
+                    <h3>{search === '' ? "Popular videos" : `Videos from your search "${search}"`}</h3>
                 }
                 <div>
                     <VideoList
