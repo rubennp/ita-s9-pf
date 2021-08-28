@@ -10,6 +10,7 @@ const youtube = axios.create({
       maxResults: 10,
       videoDefinition: 'standard',
       videoDimension: '2d',
+      type: 'video',
       key: KEY,
     },
 });
