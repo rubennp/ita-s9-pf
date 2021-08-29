@@ -20,10 +20,10 @@ const useGetVideoList = (from) => {
                     if (popular && what === 'POPULAR') setVideoList(popular);
                     else {
                         setVideoList(ytRes.items.filter(item => item.snippet).map(item => {
-                            return what === 'SEARCH' ?
-                            { id: item.id.videoId, snippet: {...item.snippet} }
-                            :
-                            { id: item.id, snippet: item.snippet };
+                            return { 
+                                id: item.id.videoId, 
+                                snippet: {...item.snippet}
+                            };
                         }));
                     }
                 } catch(err) {
@@ -36,7 +36,10 @@ const useGetVideoList = (from) => {
                         const ytRes = await getYTRes('RELATED', from.video.id);
                         if (!ytRes) throw new Error("Failed YouTube's Connection");
                         setVideoList(ytRes.items.filter(item => item.snippet).map(item => {
-                            return { id: item.id.videoId, snippet: item.snippet };
+                            return { 
+                                id: item.id.videoId, 
+                                snippet: item.snippet 
+                            };
                         }));
                     } catch(err) {
                         console.error(err.message);

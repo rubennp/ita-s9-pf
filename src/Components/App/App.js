@@ -217,7 +217,7 @@ const App = () => {
       }).flat().shuffle();
     } else return null;
   };
-  
+
   /**** THE RETURN ****/
   return (
     <Main fluid>
