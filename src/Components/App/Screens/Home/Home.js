@@ -12,8 +12,8 @@ import {
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 // Components
-import VideoList from '../../VideoList';
-import SearchesList from '../../SearchesList';
+import VideoList from '../shared/VideoList';
+import SearchesList from './SearchesList';
 
 // Icons
 import { BoxArrowUpRight as ExitIcon } from 'react-bootstrap-icons';

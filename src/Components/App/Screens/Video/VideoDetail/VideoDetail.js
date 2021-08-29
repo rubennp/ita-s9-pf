@@ -1,5 +1,5 @@
 import * as S from './VideoDetail.styled';
-import ButtonLike from '../../../VideoList/VideoItem/ButtonLike';
+import ButtonLike from '../../shared/VideoList/VideoItem/ButtonLike';
 
 /*
  * VideoDetail() : shows video & info on Video Screen

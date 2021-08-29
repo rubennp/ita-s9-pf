@@ -1,7 +1,7 @@
 import Moment from 'react-moment';
 
 // Components
-import VideoList from '../../VideoList';
+import VideoList from '../shared/VideoList';
 
 // Styled & Bootstrap Components
 import { ScreenContainer, ListContainer } from './Searches.styled';
@@ -13,7 +13,7 @@ import {
     HourglassSplit as IconFromNow,
     Search as IconSearch,
 } from 'react-bootstrap-icons';
-import ActionButton from '../../ActionButton';
+import ActionButton from '../shared/ActionButton';
 
 /*
  * Searches() : Component = Searches's Screen

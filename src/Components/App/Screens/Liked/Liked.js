@@ -1,4 +1,4 @@
-import VideoList from '../../VideoList';
+import VideoList from '../shared/VideoList';
 
 import { Container } from './Liked.styled';
 

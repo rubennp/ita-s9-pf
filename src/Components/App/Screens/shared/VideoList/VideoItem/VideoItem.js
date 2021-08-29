@@ -8,7 +8,7 @@ import { Card } from 'react-bootstrap';
 import { Item, Info, Overlay } from './VideoItem.styled';
 
 // Img & Icons
-import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
+import onErrorVidImg from '../../../../../../assets/img/default-video-thumbnail.jpeg';
 import { Eye } from 'react-bootstrap-icons';
 
 /*
