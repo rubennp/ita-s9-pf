@@ -14,7 +14,7 @@ export const Container = styled.section`
 
 export const LastViewed = styled.section`
     & > div:not(:first-of-type) {
-        height: 39vh;
+        height: 38vh;
         display: flex;
         justify-content: flex-start;
     }

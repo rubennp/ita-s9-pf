@@ -45,7 +45,10 @@ const SearchesList = ({
                     <Item key={`searchlist-item-${idx}`}>
                         <Info>
                             <Image height="50" width="50" roundedCircle src={li.imgUrl}/>
-                            <p>{li.search} · <Moment fromNow>{li.date}</Moment></p>;
+                            <div>
+                                <p>{li.search}</p>
+                                <p><Moment fromNow>{li.date}</Moment></p>
+                            </div>
                         </Info>
                         <Actions>
                             {buttonsInfo.map(button => {

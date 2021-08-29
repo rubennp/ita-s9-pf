@@ -26,13 +26,17 @@ export const Item = styled.li`
     margin: 0;
     font-size: .9em;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
-    
+
     p {
-        display: inline;
         color: white;
         font-weight: bold;
         margin: 0;
-    }
+
+        &:nth-child(2) { 
+            font-size: .75em;
+            font-style: oblique;
+        }
+    } 
 
     time { 
         color: rgba(255, 255, 255, .75);
@@ -46,6 +50,8 @@ export const Item = styled.li`
 
 export const Info = styled.div`
     & *:not(:last-child) { margin-right: 1em; }
+    display: flex;
+    align-items: center;
 `;
 
 export const Actions = styled.div`
