@@ -18,10 +18,10 @@ import Searches from './Screens/Searches';
 import Video from './Screens/Video';
 
 // Hooks
-import useGetVideoList from '../../hooks';
+import useGetVideoList from 'hooks';
 
 // Utils
-import * as utils from '../../utils';
+import * as utils from 'utils';
 
 /*
  * App(): main Component

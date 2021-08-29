@@ -9,7 +9,7 @@ import {
 
 import { MenuContainer, MenuLogo, MenuNav, Nav, Img } from './Menu.styled';
 
-import Logo from '../../../assets/img/logo.svg';
+import Logo from 'assets/img/logo.svg';
 
 const menu = 
 [
