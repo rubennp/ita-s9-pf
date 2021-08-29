@@ -41,8 +41,15 @@ const App = () => {
   const [videosFromYourSearches, setVideosFromYourSearches] = useState(null);
 
   /**** FETCHES ****/
-  const videoSearch = useGetVideoList({action: 'SEARCH', search: search, lastSearch: lastSearch}, [search]);
-  const recommendedVideos = useGetVideoList({action: 'RECOMMENDED'});
+  const [videoSearch, popularVideos] = useGetVideoList({
+    action: 'SEARCH', 
+    search: search,
+  }, [search]);
+
+  const related = useGetVideoList({
+    action: 'RELATED', 
+    video: videoSelected,
+  }, [videoSelected]);
 
   /**** EFFECTS ****/
   useEffect(function init() {
@@ -93,12 +100,11 @@ const App = () => {
     setVideosFromYourSearches(makeListFromYourSearches());
   }, [searches]);
 
-  useEffect(function onVideoSelected(){
+  useEffect(function onVideoSelected() {
     history.push('/video');
   }, [videoSelected]);
 
   /**** HANDLES ****/
-
   // on like or unlike a video...
   const handleVideoLiked = (video, like) => {
     if (like) setVideoLiked(prev => [...prev, video]);
@@ -144,7 +150,7 @@ const App = () => {
   const handleExitFromSavedList = () => {
     setFromSavedSearch(null);
     setSearch('');
-    setVideoList(recommendedVideos);
+    setVideoList(popularVideos);
   };
 
   // on reset last viewed videos on History screen...
@@ -158,7 +164,6 @@ const App = () => {
   };
 
   /**** UTILITIES ****/
-
   const saveDataOnLocalStorage = () => {
     localStorage.setItem('reactube-data', JSON.stringify({
       searches: searches,
@@ -212,7 +217,7 @@ const App = () => {
       }).flat().shuffle();
     } else return null;
   };
-
+  
   /**** THE RETURN ****/
   return (
     <Main fluid>
@@ -246,6 +251,7 @@ const App = () => {
           <Route path="/video">
             <Video 
               selected={videoSelected}
+              related={related}
               handleVideoSelect={handleVideoSelect}
               videoLiked={videoLiked}
               handleVideoLiked={handleVideoLiked}

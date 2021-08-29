@@ -1,5 +1,3 @@
-import useGetVideoList from '../../../../hooks/useGetVideoList.js';
-
 import { Container, Related } from './Video.styled.js';
 
 import VideoDetail from './VideoDetail';
@@ -9,13 +7,12 @@ import VideoList from '../../VideoList';
  * Video(): Component = Video screen
  */
 const Video = ({
-    selected, 
+    selected,
+    related,
     handleVideoSelect, 
     videoLiked, 
     handleVideoLiked
-}) => {
-    const related = useGetVideoList({action: 'RELATED', video: selected.id}, [selected]);
-    
+}) => {    
     return (
         <Container>
             <VideoDetail 

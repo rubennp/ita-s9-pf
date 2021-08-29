@@ -34,7 +34,7 @@ const params = (func, param = '') => {
       return ({ 
         params: { 
           chart: "mostPopular", 
-          region: "es", 
+          regionCode: "es", 
           videoCategory: 28 
         } 
       });

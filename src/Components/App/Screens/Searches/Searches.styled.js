@@ -25,9 +25,18 @@ export const ScreenContainer = styled.div`
 
 export const ListContainer = styled.div`
     line-height: unset;
+    background-color: rgba(255, 255, 255, .1);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
 
     &:not(:last-of-type) { 
-        margin-bottom: 1em; 
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+    }
+
+    & > ul { 
+        margin: 0 1em;
+        padding-top: .5em;
     }
 
     & > div {
@@ -38,10 +47,10 @@ export const ListContainer = styled.div`
         padding-right: .5em;
         background-color: rgba(255, 255, 255, .05);    
         filter: drop-shadow(0 0 1px rgba(255, 255, 255, .5));
-        border-radius: .25em 1em 1em .25em;
+        border-top-right-radius: 1em;
 
         margin-bottom: .5em;
-
+        
         p {
             display: inline;
             margin: .5em;

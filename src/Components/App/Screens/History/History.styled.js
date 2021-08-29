@@ -10,10 +10,6 @@ export const Container = styled.section`
     grid-template-areas:
     "lastViewed"
     "fromSearches";
-
-    ul {
-        align-self: center;
-    }
 `;
 
 export const LastViewed = styled.section`
@@ -67,6 +63,11 @@ export const LastViewed = styled.section`
         }
 
         h3 { margin-bottom: 0; }
+    }
+    
+    ul {
+        align-self: center;
+        height: 26vh;
     }
 `;
 
