@@ -1,35 +1,14 @@
 import { useState, useEffect } from 'react';
-
 import Moment from 'react-moment';
 
+// Components
+import ActionButton from '../ActionButton';
+
+// Styled & Bootstrap Components
 import { List, Item, Info, Actions } from "./SearchesList.styled";
+import { Image } from 'react-bootstrap';
 
-import { Image , Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { ArrowRepeat, Upload, Trash} from 'react-bootstrap-icons';
-
-const buttons = [
-    { 
-        id: "btnActionRepeat", 
-        colorVariant: "secondary", 
-        icon: <ArrowRepeat/>, 
-        tooltip: "Repeat this search", 
-        action: 'REPEAT', 
-    },
-    { 
-        id: "btnActionLoad", 
-        colorVariant: "secondary", 
-        icon: <Upload/>, 
-        tooltip: "Load saved results from this search", 
-        action: 'LOAD',
-    },
-    { 
-        id: "btnActionDel", 
-        colorVariant: "danger", 
-        icon: <Trash/>, 
-        tooltip: "Delete this search", 
-        action: 'DELETE', 
-    },
-];
+import { buttonsInfo } from './buttonsInfo';
 
 /*
  * SearchesList: Component = manages latests searches list
@@ -69,25 +48,17 @@ const SearchesList = ({
                             <p>{li.search} · <Moment fromNow>{li.date}</Moment></p>;
                         </Info>
                         <Actions>
-                            {buttons.map(button => {
+                            {buttonsInfo.map(button => {
                                 return (
-                                    <OverlayTrigger
-                                        key={`searchlist-item-${button.id}`}
-                                        placement="top"
-                                        delay={{ show: 150, hide: 150 }}
-                                        overlay={
-                                            <Tooltip id={`tooltip-${button.id}`}>
-                                                <small>{button.tooltip}</small>
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <Button 
-                                            type="button" 
-                                            size="sm" 
-                                            variant={button.colorVariant}
-                                            onClick={() => setAction({action: button.action, idx: idx})}
-                                        >{button.icon}</Button>
-                                    </OverlayTrigger>
+                                    <ActionButton key={button.id}
+                                        overlayKey={`searchlist-item-${button.id}`}
+                                        overlayPlacement="top"
+                                        tooltipId={`tooltip-${button.id}`}
+                                        tooltipText={button.tooltip}
+                                        buttonVariant={button.colorVariant}
+                                        buttonAction={() => setAction({action: button.action, idx: idx})}
+                                        buttonIcon={button.icon}
+                                    />
                                 );
                             })}
                         </Actions>
