@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 
 // Components
-import ActionButton from '../ActionButton';
+import ActionButton from '../../shared/ActionButton';
 
 // Styled & Bootstrap Components
 import { List, Item, Info, Actions } from "./SearchesList.styled";

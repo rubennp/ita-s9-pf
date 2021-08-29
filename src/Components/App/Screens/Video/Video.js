@@ -1,7 +1,7 @@
 import { Container, Related } from './Video.styled.js';
 
 import VideoDetail from './VideoDetail';
-import VideoList from '../../VideoList';
+import VideoList from '../shared/VideoList';
 
 /*
  * Video(): Component = Video's Screen

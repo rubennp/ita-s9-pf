@@ -1,11 +1,11 @@
 // Components
-import ActionButton from '../../ActionButton';
+import ActionButton from '../shared/ActionButton';
 
 // Styled Components & Bootstrap
 import { Container, FromSearches, LastViewed } from './History.styled';
 
 // Components
-import VideoList from '../../VideoList';
+import VideoList from '../shared/VideoList';
 
 /*
  * History(): Component = History's screen.
