@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import { getYTRes } from '../apis/youtube';
-// import * as myapi from '../apis/myapi';
 
 const useGetVideoList = (from) => {
     const [videoList, setVideoList] = useState(null);
@@ -27,14 +26,6 @@ const useGetVideoList = (from) => {
                 } catch(err) {
                     console.error(err.message);
                 }
-                // if (from.search !== '') {
-                //     setVideoList(myapi.filteredItems(from.search));
-                // } else {
-                //     setVideoList(myapi.recommendedRes.items.map(item => {
-                //             return { id: item.id, snippet: item.snippet};
-                //         })
-                //     );
-                // }
                 break;
             case 'RELATED':
                 if (from.video) {
@@ -48,18 +39,7 @@ const useGetVideoList = (from) => {
                         console.error(err.message);
                     }
                 } else return null;
-                // setVideoList(myapi.relatedRes.items.map(item => {
-                //         return { id: item.id.videoId, snippet: item.snippet };
-                //     })
-                // );
                 break;
-            // case 'RECOMMENDED':
-            //     return popular;
-                // setVideoList(myapi.recommendedRes.items.map(item => {
-                //         return { id: item.id, snippet: item.snippet};
-                //     })
-                // );
-                // break;
             default:
                 break;
         }
