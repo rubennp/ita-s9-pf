@@ -46,22 +46,6 @@ export const LastViewed = styled.section`
         justify-content: space-between;
         align-items: center;
 
-        button {
-            justify-self: flex-end;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 100%;
-            height: 1.5em;
-            width: 1.5em;
-            margin: .3em;
-    
-            svg {
-                margin-left: .1em;
-                overflow: visible; 
-            }
-        }
-
         h3 { margin-bottom: 0; }
     }
     

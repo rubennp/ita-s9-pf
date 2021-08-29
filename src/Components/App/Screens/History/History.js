@@ -1,12 +1,8 @@
+// Components
+import ActionButton from '../../ActionButton';
+
 // Styled Components & Bootstrap
 import { Container, FromSearches, LastViewed } from './History.styled';
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-
-// Icons
-import { 
-    Trash as IconReset,
-    Shuffle as IconRandom,
-} from 'react-bootstrap-icons';
 
 // Components
 import VideoList from '../../VideoList';
@@ -29,20 +25,16 @@ const History = ({
                 <div>
                     <h3>Last viewed videos</h3>
                     {list && 
-                        <OverlayTrigger 
-                            key="lastViewed-resetButton"
-                            placement="left"
-                            delay={{ show: 150, hide: 150 }}
-                            overlay={
-                                <Tooltip id={`lastViewed-resetButton`}>
-                                    <small>Reset last viewed videos list</small>
-                                </Tooltip>
-                            }
-                        >
-                            <Button variant="danger" size="sm" onClick={() => {
-                                handleResetViewed(); 
-                            }}><IconReset size={12}/></Button>
-                        </OverlayTrigger>
+                        <ActionButton
+                            small 
+                            overlayKey="lastViewed-resetButton"
+                            overlayPlacement="left"
+                            tooltipId="lastViewed-resetButton"
+                            tooltipText="Reset last viewed videos list"
+                            buttonVariant="danger"
+                            buttonAction={() => handleResetViewed()}
+                            buttonIcon="Trash"
+                        />
                     }
                 </div>
                 {list ?
@@ -67,20 +59,16 @@ const History = ({
                 <div>
                     <h3>Random videos from your searches</h3>
                     {videosFromYourSearches &&
-                        <OverlayTrigger 
-                            key="videosFromYourSearches-randomButton"
-                            placement="left"
-                            delay={{ show: 150, hide: 150 }}
-                            overlay={
-                                <Tooltip id={`videosFromYourSearches-randomButton`}>
-                                    <small>Random new list</small>
-                                </Tooltip>
-                            }
-                        >
-                            <Button variant="danger" size="sm" onClick={() => {
-                                handleRandomListFromYourSearches(); 
-                            }}><IconRandom size={12}/></Button>
-                        </OverlayTrigger>
+                        <ActionButton
+                            small 
+                            overlayKey="videosFromYourSearches-randomButton"
+                            overlayPlacement="left"
+                            tooltipId="videosFromYourSearches-randomButton"
+                            tooltipText="Random new list"
+                            buttonVariant="danger"
+                            buttonAction={() => handleRandomListFromYourSearches()}
+                            buttonIcon="Shuffle"
+                    />
                     }
                 </div>
                 {videosFromYourSearches ?

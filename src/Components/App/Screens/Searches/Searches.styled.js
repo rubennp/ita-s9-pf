@@ -28,11 +28,8 @@ export const ListContainer = styled.div`
     background-color: rgba(255, 255, 255, .1);
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
-
-    &:not(:last-of-type) { 
-        padding-bottom: 1em;
-        margin-bottom: 1em;
-    }
+    padding-bottom: 1em;
+    margin-bottom: 1em;
 
     & > ul { 
         margin: 0 1em;
@@ -44,7 +41,7 @@ export const ListContainer = styled.div`
         grid-template-columns: 1fr 1fr 1fr;
         justify-content: space-between;
         align-items: center;
-        padding-right: .5em;
+        padding: 0 .5em;
         background-color: rgba(255, 255, 255, .05);    
         filter: drop-shadow(0 0 1px rgba(255, 255, 255, .5));
         border-top-right-radius: 1em;
@@ -62,7 +59,7 @@ export const ListContainer = styled.div`
             font-size: .75em;
 
             time {
-                margin-left: .25em;
+                margin-left: .5em;
                 
                 &:last-of-type {
                     font-weight: normal;
@@ -79,22 +76,7 @@ export const ListContainer = styled.div`
             color: rgba(255, 255, 255, .75);
             padding: .1em;
             justify-self: center;
-            svg { margin-right: .25em; }
-        }
-
-        button {
-            justify-self: flex-end;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 100%;
-            height: 1.5em;
-            width: 1.5em;
-    
-            svg { 
-                margin-left: .1em;
-                overflow: visible; 
-            }
+            svg { margin-right: .5em; }
         }
     }
 `;

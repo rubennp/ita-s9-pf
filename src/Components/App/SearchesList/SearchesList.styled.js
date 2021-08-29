@@ -49,9 +49,5 @@ export const Info = styled.div`
 `;
 
 export const Actions = styled.div`
-    & *:not(:last-child) { margin-right: .5em; }     
-
-    button {
-        border-radius: 100%;
-    }
+    & *:not(:last-child) { margin-right: .5em; }
 `;

@@ -1,22 +1,24 @@
-import styled from 'styled-components';
-
 // Styled & Bootstrap Components
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { StyledButton } from './ActionButton.styled';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 // Icons
 import { 
     ArrowRepeat, 
     Upload, 
     Trash,
+    Shuffle,
 } from 'react-bootstrap-icons';
 
 const icons = {
     "ArrowRepeat": <ArrowRepeat />,
     "Upload": <Upload/>,
     "Trash": <Trash />,
+    "Shuffle": <Shuffle />,
 };
 
 const ActionButton = ({
+    small,
     overlayKey,
     overlayPlacement,
     tooltipId,
@@ -36,7 +38,8 @@ const ActionButton = ({
                 </Tooltip>
             }
         >
-            <StyledButton 
+            <StyledButton
+                small={small}
                 type="button" 
                 size="sm" 
                 variant={buttonVariant}
@@ -45,9 +48,5 @@ const ActionButton = ({
         </OverlayTrigger>
     );
 };
-
-const StyledButton = styled(Button)`
-    border-radius: 100%;
-`;
 
 export default ActionButton;

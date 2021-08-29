@@ -5,16 +5,15 @@ import VideoList from '../../VideoList';
 
 // Styled & Bootstrap Components
 import { ScreenContainer, ListContainer } from './Searches.styled';
-import { Button } from 'react-bootstrap';
 
 // Icons
 import { 
-    Trash as IconDel,
     Calendar as IconDay,
     Clock as IconTime,
     HourglassSplit as IconFromNow,
     Search as IconSearch,
 } from 'react-bootstrap-icons';
+import ActionButton from '../../ActionButton';
 
 /*
  * Searches() : Component = Searches's Screen
@@ -41,9 +40,16 @@ const Searches = ({
                                 <Moment fromNow>{search.date}</Moment>
                             </p>
                             <p><IconSearch />{search.search}</p>
-                            <Button variant="danger" size="sm" onClick={() => {
-                                handleDelSearch(idx);
-                            }}><IconDel size={12}/></Button>
+                            <ActionButton
+                                small
+                                overlayKey="delButtonOnSearchesScreenKey"
+                                overlayPlacement="left"
+                                tooltipId="delButtonOnSearchesScreenTooltip"
+                                tooltipText="Delete this search list"
+                                buttonVariant="danger"
+                                buttonAction={() =>handleDelSearch(idx)}
+                                buttonIcon="Trash"
+                            />
                         </div>
                         <VideoList list={search.videos} handleVideoSelect={handleVideoSelect} videoLiked={videoLiked} handleVideoLiked={handleVideoLiked}/>
                     </ListContainer>
