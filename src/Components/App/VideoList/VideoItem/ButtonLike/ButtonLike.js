@@ -4,6 +4,9 @@ import { Button } from './ButtonLike.styled';
 
 import { Heart, HeartFill } from 'react-bootstrap-icons';
 
+/*
+ * ButtonLike(): Component = manages like button
+ */
 const ButtonLike = ({favorites, video, videoLiked, handleVideoLiked}) => {
     const [like, setLike] = useState(false);
 

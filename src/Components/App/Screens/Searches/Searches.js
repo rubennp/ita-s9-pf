@@ -16,6 +16,9 @@ import {
     Search as IconSearch,
 } from 'react-bootstrap-icons';
 
+/*
+ * Searches() : Component = Searches's Screen
+ */
 const Searches = ({
     searches,
     handleDelSearch,

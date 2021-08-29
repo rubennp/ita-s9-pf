@@ -8,13 +8,31 @@ import { Image , Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { ArrowRepeat, Upload, Trash} from 'react-bootstrap-icons';
 
 const buttons = [
-    { id: "btnActionRepeat", colorVariant: "secondary", icon: <ArrowRepeat/>, tooltip: "Repeat this search", action: 'REPEAT', },
-    { id: "btnActionLoad", colorVariant: "secondary", icon: <Upload/>, tooltip: "Load saved results from this search", action: 'LOAD',},
-    { id: "btnActionDel", colorVariant: "danger", icon: <Trash/>, tooltip: "Delete this search", action: 'DELETE', },
+    { 
+        id: "btnActionRepeat", 
+        colorVariant: "secondary", 
+        icon: <ArrowRepeat/>, 
+        tooltip: "Repeat this search", 
+        action: 'REPEAT', 
+    },
+    { 
+        id: "btnActionLoad", 
+        colorVariant: "secondary", 
+        icon: <Upload/>, 
+        tooltip: "Load saved results from this search", 
+        action: 'LOAD',
+    },
+    { 
+        id: "btnActionDel", 
+        colorVariant: "danger", 
+        icon: <Trash/>, 
+        tooltip: "Delete this search", 
+        action: 'DELETE', 
+    },
 ];
 
 /*
- * SearchesList: component. Controls latests searches list
+ * SearchesList: Component = manages latests searches list
  */
 const SearchesList = ({
     list, 

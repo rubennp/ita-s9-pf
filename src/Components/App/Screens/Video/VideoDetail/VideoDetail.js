@@ -1,6 +1,9 @@
 import * as S from './VideoDetail.styled';
 import ButtonLike from '../../../VideoList/VideoItem/ButtonLike';
 
+/*
+ * VideoDetail() : shows video & info on Video Screen
+ */
 const VideoDetail = ({video, videoLiked, handleVideoLiked}) => {
     return (
         <S.Detail>

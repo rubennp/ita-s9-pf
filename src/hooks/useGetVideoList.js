@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { getYTRes } from '../apis/youtube';
 
+/*
+ * useGetVideoList() : Hook = manages fetches data from youtube
+ */
 const useGetVideoList = (from) => {
     const [videoList, setVideoList] = useState(null);
     const [popular, setPopular] = useState(null);

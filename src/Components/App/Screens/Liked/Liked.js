@@ -2,6 +2,9 @@ import VideoList from '../../VideoList';
 
 import { Container } from './Liked.styled';
 
+/*
+ * Liked() : Component = Liked videos' Screen
+ */
 const Liked = ({list, handleVideoLiked, handleVideoSelect}) => {
     return (
         <Container list={list}>

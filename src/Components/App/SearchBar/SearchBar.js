@@ -6,10 +6,7 @@ import { Search as SearchIcon } from 'react-bootstrap-icons';
 import { SearchContainer } from './SearchBar.styled';
 
 /*
- * SearchBar(): Component
- * 
- * vistos los problemas con las cuotas de la API de youtube, capturo Enter para realizar fetch y que 
- * no realize tantas consultas a la API.
+ * SearchBar(): Component = shows & manages SearchBar
  */
 const SearchBar = ({search, handleSubmit, handleExitFromSavedList }) => {
     const [value, setValue] = useState(search);

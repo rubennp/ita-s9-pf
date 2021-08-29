@@ -19,6 +19,9 @@ const menu =
     { what: "Searches", icon: <SavedIcon/>, route: "searches" },
 ];
 
+/*
+ * Menu() : Component = shows App menu & manages routes
+ */
 const Menu = () => {
     return (
         <MenuContainer>

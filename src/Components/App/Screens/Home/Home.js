@@ -19,7 +19,7 @@ import SearchesList from '../../SearchesList';
 import { BoxArrowUpRight as ExitIcon } from 'react-bootstrap-icons';
 
 /*
- * Home() : Component Home Screen
+ * Home() : Component = Home's Screen
  */
 const Home = ({
     search, 

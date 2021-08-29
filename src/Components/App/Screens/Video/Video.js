@@ -4,7 +4,7 @@ import VideoDetail from './VideoDetail';
 import VideoList from '../../VideoList';
 
 /*
- * Video(): Component = Video screen
+ * Video(): Component = Video's Screen
  */
 const Video = ({
     selected,

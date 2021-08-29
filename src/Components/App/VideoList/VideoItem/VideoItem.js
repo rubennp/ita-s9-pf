@@ -11,6 +11,9 @@ import { Item, Info, Overlay } from './VideoItem.styled';
 import onErrorVidImg from '../../../../assets/img/default-video-thumbnail.jpeg';
 import { Eye } from 'react-bootstrap-icons';
 
+/*
+ * VideoItem() : Component = manages items on video lists.
+ */
 const VideoItem = ({
     fromLastViewed,
     page, 

@@ -5,7 +5,7 @@ import VideoItem from './VideoItem';
 import { List } from './VideoList.styled';
 
 /*
- * VideoList(): component. Controls the lists of videos.
+ * VideoList(): Component = manages the differents lists of videos.
  */
 const VideoList = ({
     fromLastViewed,
