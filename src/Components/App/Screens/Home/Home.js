@@ -5,18 +5,15 @@ import {
     Container, 
     RecommendedOrSearched, 
     SavedList,
-    ExitButton, 
     LastSearches, 
     Favorites 
 } from "./Home.styled";
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 // Components
 import VideoList from '../shared/VideoList';
 import SearchesList from './SearchesList';
+import ActionButton from '../shared/ActionButton/ActionButton';
 
-// Icons
-import { BoxArrowUpRight as ExitIcon } from 'react-bootstrap-icons';
 
 /*
  * Home() : Component = Home's Screen
@@ -46,20 +43,16 @@ const Home = ({
                 { listFromSaved ? 
                     <SavedList>
                         <h3>Videos from your saved list "{listFromSaved}"</h3>
-                        <OverlayTrigger 
-                            key="savedlist-exitbutton"
-                            placement="left"
-                            delay={{ show: 150, hide: 150 }}
-                            overlay={
-                                <Tooltip id={`tooltip-savedlist-exitbutton`}>
-                                    <small>Exit from saved list</small>
-                                </Tooltip>
-                            }
-                        >
-                            <ExitButton variant="secondary" size="sm" onClick={() => handleExitFromSavedList()}>
-                                <ExitIcon/>
-                            </ExitButton>
-                        </OverlayTrigger>
+                        <ActionButton
+                            look="small"
+                            overlayKey="savedlist-exitbutton"
+                            overlayPlacement="left"
+                            tooltipId="tooltip-savedlist-exitbutton"
+                            tooltipText="Exit from saved list"
+                            buttonVariant="secondary"
+                            buttonAction={() => handleExitFromSavedList()}
+                            buttonIcon="BoxArrowUpRight"
+                        />
                     </SavedList> 
                 : 
                     <h3>{search === '' ? "Popular videos" : `Videos from your search "${search}"`}</h3>

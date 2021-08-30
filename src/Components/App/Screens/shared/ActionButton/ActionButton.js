@@ -8,6 +8,7 @@ import {
     Upload, 
     Trash,
     Shuffle,
+    BoxArrowUpRight,
 } from 'react-bootstrap-icons';
 
 const icons = {
@@ -15,6 +16,7 @@ const icons = {
     "Upload": <Upload/>,
     "Trash": <Trash />,
     "Shuffle": <Shuffle />,
+    "BoxArrowUpRight": <BoxArrowUpRight />,
 };
 
 const ActionButton = ({
