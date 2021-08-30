@@ -10,7 +10,6 @@ import { Main, Screen } from './App.styled';
 import SearchBar from './SearchBar';
 import Menu from './Menu';
 
-// Screen Components
 import Home from './Screens/Home';
 import History from './Screens/History';
 import Liked from './Screens/Liked';
@@ -64,6 +63,10 @@ const App = () => {
       saveDataOnLocalStorage();
     }
   }, []);
+
+  useEffect(function onSearchExitSavedList() {
+    setFromSavedSearch(null);
+  }, [search]);
 
   useEffect(function saveData() {
     saveDataOnLocalStorage();

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Form, Row, Col, InputGroup } from 'react-bootstrap';
-import { Search as SearchIcon } from 'react-bootstrap-icons';
 
-// Styled Components
+// Styled & Bootstrap Components
 import { SearchContainer } from './SearchBar.styled';
+import { Form, Row, Col, InputGroup } from 'react-bootstrap';
+
+// Icons
+import { Search as SearchIcon } from 'react-bootstrap-icons';
 
 /*
  * SearchBar(): Component = shows & manages SearchBar
