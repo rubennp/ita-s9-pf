@@ -5,7 +5,7 @@ export const StyledButton = styled(Button)`
     border-radius: 100%;
 
     ${(props) => {
-        if (props.small) {
+        if (props.look === 'small') {
             return (
                 `justify-self: flex-end;
                  display: inline-flex;
@@ -17,6 +17,7 @@ export const StyledButton = styled(Button)`
                  margin: .3em;
                  border: none;
                  background-color: rgba(0, 0, 0, 0) !important;
+
                  svg {
                     margin-left: .1em;
                     overflow: visible; 

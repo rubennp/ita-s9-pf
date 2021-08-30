@@ -18,7 +18,7 @@ const icons = {
 };
 
 const ActionButton = ({
-    small,
+    look,
     overlayKey,
     overlayPlacement,
     tooltipId,
@@ -39,7 +39,7 @@ const ActionButton = ({
             }
         >
             <StyledButton
-                small={small}
+                look={look}
                 type="button" 
                 size="sm" 
                 variant={buttonVariant}

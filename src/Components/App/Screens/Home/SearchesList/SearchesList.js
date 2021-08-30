@@ -54,6 +54,7 @@ const SearchesList = ({
                             {buttonsInfo.map(button => {
                                 return (
                                     <ActionButton key={button.id}
+                                        look="normal"
                                         overlayKey={`searchlist-item-${button.id}`}
                                         overlayPlacement="top"
                                         tooltipId={`tooltip-${button.id}`}

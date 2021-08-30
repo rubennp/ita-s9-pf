@@ -41,7 +41,7 @@ const Searches = ({
                             </p>
                             <p><IconSearch />{search.search}</p>
                             <ActionButton
-                                small
+                                look="small"
                                 overlayKey="delButtonOnSearchesScreenKey"
                                 overlayPlacement="left"
                                 tooltipId="delButtonOnSearchesScreenTooltip"

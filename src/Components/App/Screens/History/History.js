@@ -26,7 +26,7 @@ const History = ({
                     <h3>Last viewed videos</h3>
                     {list && 
                         <ActionButton
-                            small 
+                            look="small"
                             overlayKey="lastViewed-resetButton"
                             overlayPlacement="left"
                             tooltipId="lastViewed-resetButton"
@@ -60,7 +60,7 @@ const History = ({
                     <h3>Random videos from your searches</h3>
                     {videosFromYourSearches &&
                         <ActionButton
-                            small 
+                            look="small" 
                             overlayKey="videosFromYourSearches-randomButton"
                             overlayPlacement="left"
                             tooltipId="videosFromYourSearches-randomButton"

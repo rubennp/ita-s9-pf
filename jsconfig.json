@@ -3,5 +3,5 @@
         "baseUrl": "src",
         "target": "esnext"
     },
-    "include": ["src"],
+    "include": ["src"]
 }
