@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const KEY = 'AIzaSyBXS0HHiuF9dPDeNOlUi8wmKGpZbNm6CI8';
+const KEY = 'secret';
 
 // fetch videos from API Youtube Data v3
 const youtube = axios.create({
